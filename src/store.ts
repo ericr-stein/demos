@@ -50,7 +50,7 @@ export const useVizStore = create<VizState>((set) => ({
   walk: [],
   playing: false,
   stepIndex: 0,
-  stepsPerSecond: 8, // 1 step = 16th note → 8 sps = 120 BPM (see player.ts)
+  stepsPerSecond: 4, // 1 step = 16th note → BPM = sps × 15, so 4 = 60 BPM
   setPlaying: (playing) => set({ playing }),
   setStepIndex: (stepIndex) => set({ stepIndex }),
   setSpeed: (stepsPerSecond) => set({ stepsPerSecond }),

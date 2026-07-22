@@ -8,7 +8,9 @@ import { transportActive } from '../../audio/player'
 import type { PopulationGrid } from '../../data/grid'
 
 /**
- * The glowing dot that performs the 3D walk, plus the playback clock.
+ * The glowing dot: performs the 3D walk while playing; otherwise it's in
+ * DISCOVERY mode — it follows the mouse across the surface (Stereogram's
+ * hover raycast sets stereoHover, and each touched cell pings a note).
  *
  * Each frame while `playing`:
  *   1. advance a time accumulator by stepsPerSecond
@@ -39,6 +41,7 @@ export function WalkDot({
   const stepsPerSecond = useVizStore((s) => s.stepsPerSecond)
   const setStepIndex = useVizStore((s) => s.setStepIndex)
   const setPlaying = useVizStore((s) => s.setPlaying)
+  const stereoHover = useVizStore((s) => s.stereoHover)
 
   useFrame((_, delta) => {
     if (walk.length === 0 || !group.current) return
@@ -61,11 +64,18 @@ export function WalkDot({
       }
     }
 
-    // visual: glide toward the current step's position, floating just
-    // above the surface so the sphere never clips into it
-    const step = walk[index]
-    const yi = grid.years.indexOf(step.year)
-    const target = pos(yi, step.age, step.count)
+    // visual: glide toward the current step's position — or, in discovery
+    // mode (not playing), toward the cell under the mouse. Either way the
+    // dot floats just above the surface so the sphere never clips into it.
+    let target: THREE.Vector3
+    if (!playing && stereoHover) {
+      const yi = grid.years.indexOf(stereoHover.year)
+      target = pos(yi, stereoHover.age, stereoHover.count)
+    } else {
+      const step = walk[index]
+      const yi = grid.years.indexOf(step.year)
+      target = pos(yi, step.age, step.count)
+    }
     target.y += 0.42
     group.current.position.lerp(target, Math.min(1, delta * 14))
   })

@@ -160,7 +160,9 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
     if (yi < 0 || yi >= nY || ai < 0 || ai >= nA) return
     const count = grid.value[yi][ai]
     setStereoHover({ year: grid.years[yi], age: grid.ages[ai], count })
-    sonifyValue(yi * 1000 + ai, count, grid.maxValue)
+    // discovery mode only — while the walk plays, the walk owns the sound
+    if (!useVizStore.getState().playing)
+      sonifyValue(yi * 1000 + ai, count, grid.maxValue)
   }
 
   return (

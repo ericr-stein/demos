@@ -122,20 +122,22 @@ export default function App() {
           >
             ↺
           </button>
-          <select
-            className="transport"
-            value={stepsPerSecond}
+          <input
+            type="range"
+            className="bpm"
+            min={40}
+            max={100}
+            step={1}
+            value={Math.round(stepsPerSecond * 15)}
             onChange={(e) => {
-              const sps = Number(e.target.value)
+              const sps = Number(e.target.value) / 15 // BPM → steps/second
               setSpeed(sps)
               if (transportActive()) applyTempo(sps)
             }}
-          >
-            <option value={4}>60 bpm</option>
-            <option value={8}>120 bpm</option>
-            <option value={16}>240 bpm</option>
-            <option value={32}>480 bpm</option>
-          </select>
+          />
+          <span className="year-label bpm-label">
+            {Math.round(stepsPerSecond * 15)} bpm
+          </span>
           <span className="year-label">
             {walk[stepIndex].year} · age {walk[stepIndex].age} ·{' '}
             {walk[stepIndex].count.toLocaleString('de-CH')}
