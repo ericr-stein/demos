@@ -10,7 +10,9 @@ git reset --hard origin/main
 # (infisical-run). Compose interpolates ${...:?} even for build, so give the
 # build a dummy value — it never reaches the image — and let the unit restart
 # with the real one.
-DEMOS_DB_PASSWORD="${DEMOS_DB_PASSWORD:-build-only-dummy}" docker compose build
+DEMOS_DB_PASSWORD="${DEMOS_DB_PASSWORD:-build-only-dummy}" \
+CF_TUNNEL_TOKEN="${CF_TUNNEL_TOKEN:-build-only-dummy}" \
+  docker compose build
 sudo systemctl restart demos.service
 
 for c in demos demos-api; do

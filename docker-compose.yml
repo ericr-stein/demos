@@ -27,6 +27,22 @@ services:
       com.box.managed-by: agent
     networks: [edge, internal]
     restart: unless-stopped
+  # Public ingress: outbound-only Cloudflare Tunnel (no inbound ports on the
+  # VM). Routes demos.nonsh.site from the internet to demos/demos-api directly,
+  # bypassing Caddy/Authelia — the tailnet route through Caddy stays gated.
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: demos-cloudflared
+    command: ["tunnel", "--no-autoupdate", "run"]
+    environment:
+      - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN:?inject_via_infisical}
+    labels:
+      com.box.project: demos
+      com.box.service: cloudflared
+      com.box.tier: agent
+      com.box.managed-by: agent
+    networks: [edge]
+    restart: unless-stopped
 networks:
   edge: { external: true }
   internal: { external: true }
