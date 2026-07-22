@@ -36,3 +36,12 @@ Docker multi-stage build (pnpm build → nginx). Deployed on the devbox as
 `deploy.sh` (fetch + reset to `origin/main`, rebuild image, restart
 container). CI (typecheck + build) runs on GitHub-hosted runners for
 pushes and PRs.
+
+## Local run (any machine with Docker)
+
+```bash
+make local-up      # self-contained stack: web + api + own Postgres → http://localhost:8080
+make local-import  # load the KTZH population dataset (or URL=... TABLE=... for any OGD CSV)
+make local-clean   # stop and delete the local database
+make help          # all targets
+```

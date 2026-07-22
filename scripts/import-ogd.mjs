@@ -58,6 +58,13 @@ const types = header.map((_, i) => {
 await client.connect()
 try {
   await client.query('BEGIN')
+  await client.query(`CREATE TABLE IF NOT EXISTS _datasets (
+    table_name text PRIMARY KEY,
+    source_url text NOT NULL,
+    row_count bigint,
+    columns jsonb NOT NULL,
+    imported_at timestamptz NOT NULL DEFAULT now()
+  )`)
   await client.query(`DROP TABLE IF EXISTS ${ident(table)}`)
   const colsDdl = header.map((c, i) => `${ident(c)} ${types[i]}`).join(', ')
   await client.query(`CREATE TABLE ${ident(table)} (${colsDdl})`)
