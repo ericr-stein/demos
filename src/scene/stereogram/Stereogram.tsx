@@ -28,6 +28,10 @@ const LIFT = 0.04 // lines float a hair above the surface to avoid z-fighting
 
 const ISOLINE_LEVELS = [2_000, 5_000, 10_000, 15_000, 20_000]
 
+// palette red pushed past luminance 1.0 with toneMapped=false → the bloom
+// pass gives the year profiles a very light glow
+const PROFILE_GLOW = new THREE.Color('#9e2a2b').multiplyScalar(2.1)
+
 export function Stereogram({ grid }: { grid: PopulationGrid }) {
   const setStereoHover = useVizStore((s) => s.setStereoHover)
   const nY = grid.years.length
@@ -48,8 +52,8 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
     const geo = new THREE.BufferGeometry()
     const positions = new Float32Array(nY * nA * 3)
     const colors = new Float32Array(nY * nA * 3)
-    const low = new THREE.Color('#2a3550')
-    const high = new THREE.Color('#e8d9b0')
+    const low = new THREE.Color('#335c67')
+    const high = new THREE.Color('#fff3b0')
     const c = new THREE.Color()
     for (let yi = 0; yi < nY; yi++) {
       for (let ai = 0; ai < nA; ai++) {
@@ -174,28 +178,28 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
       </mesh>
 
       <mesh geometry={walls}>
-        <meshStandardMaterial color="#8f815f" side={THREE.DoubleSide}
+        <meshStandardMaterial color="#6d3132" side={THREE.DoubleSide}
           roughness={0.85} metalness={0.05} />
       </mesh>
       {/* floor sealing the block's underside */}
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]}>
         <planeGeometry args={[X_SPAN, Z_SPAN]} />
-        <meshStandardMaterial color="#6f6449" roughness={0.9} />
+        <meshStandardMaterial color="#540b0e" roughness={0.9} />
       </mesh>
 
       {yearProfiles.map((pts, i) => (
-        <Line key={grid.years[i]} points={pts} color="#e05b4b"
-          lineWidth={1.6} transparent opacity={0.9} />
+        <Line key={grid.years[i]} points={pts} color={PROFILE_GLOW}
+          toneMapped={false} lineWidth={1.6} transparent opacity={0.9} />
       ))}
 
       {cohorts.map(({ birth, pts }) => (
-        <Line key={birth} points={pts} color="#5b8fe0"
+        <Line key={birth} points={pts} color="#7fb6c2"
           lineWidth={birth % 10 === 0 ? 1.4 : 0.6}
           transparent opacity={birth % 10 === 0 ? 0.95 : 0.4} />
       ))}
 
       <lineSegments geometry={isolineGeo}>
-        <lineBasicMaterial color="#4bc47f" transparent opacity={0.9} />
+        <lineBasicMaterial color="#e09f3e" transparent opacity={0.9} />
       </lineSegments>
 
       {/* the 3D walk: glowing dot + playback clock (see WalkDot.tsx) */}
@@ -206,14 +210,14 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
         const yi = grid.years.indexOf(y)
         return (
         <Text key={y} position={pos(yi, nA - 1, 0).add(new THREE.Vector3(0, 0, 2))}
-          fontSize={1.1} color="#8fa1c4" rotation={[-Math.PI / 2, 0, 0]}>
+          fontSize={1.1} color="#c9b98f" rotation={[-Math.PI / 2, 0, 0]}>
           {String(y)}
         </Text>
         )
       })}
       {grid.ages.filter((a) => a % 10 === 0).map((a) => (
         <Text key={a} position={pos(0, a, 0).add(new THREE.Vector3(-2.2, 0, 0))}
-          fontSize={0.8} color="#8fa1c4" rotation={[-Math.PI / 2, 0, 0]}>
+          fontSize={0.8} color="#c9b98f" rotation={[-Math.PI / 2, 0, 0]}>
           {a === 100 ? '100+' : String(a)}
         </Text>
       ))}

@@ -4,9 +4,9 @@ import type { ThreeEvent } from '@react-three/fiber'
 import { usePoints, useVizStore } from '../store'
 import { sonifyPoint } from '../audio/engine'
 
-const BASE_COLOR = new THREE.Color('#4f8fea')
-const HOT_COLOR = new THREE.Color('#f2b134')
-const HOVER_COLOR = new THREE.Color('#ffffff')
+const BASE_COLOR = new THREE.Color('#335c67')
+const HOT_COLOR = new THREE.Color('#e09f3e')
+const HOVER_COLOR = new THREE.Color('#fff3b0')
 
 /**
  * Instanced column field: lon → x, lat → z, population → column height + color.
