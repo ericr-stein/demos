@@ -42,6 +42,8 @@ export default function App() {
   const setPlaying = useVizStore((s) => s.setPlaying)
   const setStepIndex = useVizStore((s) => s.setStepIndex)
   const setSpeed = useVizStore((s) => s.setSpeed)
+  const selectedCohort = useVizStore((s) => s.selectedCohort)
+  const selectCohort = useVizStore((s) => s.selectCohort)
 
   useEffect(() => {
     loadPopulationData().then(setData)
@@ -138,6 +140,18 @@ export default function App() {
           <span className="year-label bpm-label">
             {Math.round(stepsPerSecond * 15)} bpm
           </span>
+          {selectedCohort !== null && (
+            <button
+              className="transport cohort-chip"
+              title="back to walking the years"
+              onClick={() => {
+                stopTransportWalk()
+                selectCohort(null)
+              }}
+            >
+              cohort {selectedCohort} ✕
+            </button>
+          )}
           <span className="year-label">
             {walk[stepIndex].year} · age {walk[stepIndex].age} ·{' '}
             {walk[stepIndex].count.toLocaleString('de-CH')}

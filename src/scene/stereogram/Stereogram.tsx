@@ -4,6 +4,7 @@ import type { ThreeEvent } from '@react-three/fiber'
 import { Line, Text } from '@react-three/drei'
 import { useVizStore } from '../../store'
 import { sonifyValue } from '../../audio/engine'
+import { stopTransportWalk } from '../../audio/player'
 import type { PopulationGrid } from '../../data/grid'
 import { marchingSquares } from './isolines'
 import { WalkDot } from './WalkDot'
@@ -31,9 +32,13 @@ const ISOLINE_LEVELS = [2_000, 5_000, 10_000, 15_000, 20_000]
 // palette red pushed past luminance 1.0 with toneMapped=false → the bloom
 // pass gives the year profiles a very light glow
 const PROFILE_GLOW = new THREE.Color('#9e2a2b').multiplyScalar(2.1)
+// selected cohort: cream pushed past 1.0 so it glows like the walk dot
+const COHORT_GLOW = new THREE.Color('#fff3b0').multiplyScalar(1.8)
 
 export function Stereogram({ grid }: { grid: PopulationGrid }) {
   const setStereoHover = useVizStore((s) => s.setStereoHover)
+  const selectedCohort = useVizStore((s) => s.selectedCohort)
+  const selectCohort = useVizStore((s) => s.selectCohort)
   const nY = grid.years.length
   const nA = grid.ages.length
 
@@ -192,11 +197,29 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
           toneMapped={false} lineWidth={1.6} transparent opacity={0.9} />
       ))}
 
-      {cohorts.map(({ birth, pts }) => (
-        <Line key={birth} points={pts} color="#7fb6c2"
-          lineWidth={birth % 10 === 0 ? 1.4 : 0.6}
-          transparent opacity={birth % 10 === 0 ? 0.95 : 0.4} />
-      ))}
+      {/* cohort lines are clickable: selecting one swaps the playback
+          timeline to that cohort's diagonal (see selectCohort in store) */}
+      {cohorts.map(({ birth, pts }) => {
+        const selected = birth === selectedCohort
+        return (
+          <Line
+            key={birth}
+            points={pts}
+            color={selected ? COHORT_GLOW : '#7fb6c2'}
+            toneMapped={!selected}
+            lineWidth={selected ? 2.4 : birth % 10 === 0 ? 1.4 : 0.6}
+            transparent
+            opacity={selected ? 1 : birth % 10 === 0 ? 0.95 : 0.4}
+            onClick={(e) => {
+              e.stopPropagation()
+              stopTransportWalk()
+              selectCohort(selected ? null : birth) // click again to deselect
+            }}
+            onPointerOver={() => (document.body.style.cursor = 'pointer')}
+            onPointerOut={() => (document.body.style.cursor = 'auto')}
+          />
+        )
+      })}
 
       <lineSegments geometry={isolineGeo}>
         <lineBasicMaterial color="#e09f3e" transparent opacity={0.9} />

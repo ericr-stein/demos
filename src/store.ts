@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import type { PopulationPoint } from './data/types'
 import type { PopulationData } from './data/load'
 import type { PopulationGrid } from './data/grid'
-import { buildWalk, type WalkStep } from './audio/walk'
+import { buildCohortWalk, buildWalk, type WalkStep } from './audio/walk'
 
 export interface StereoHover {
   year: number
@@ -19,6 +19,9 @@ interface VizState {
   setStereoHover: (h: StereoHover | null) => void
   // ── 3D walk playback ──
   walk: WalkStep[]
+  /** birth year of the selected cohort line, or null = walk the years */
+  selectedCohort: number | null
+  selectCohort: (birth: number | null) => void
   playing: boolean
   stepIndex: number
   stepsPerSecond: number
@@ -45,7 +48,20 @@ export const useVizStore = create<VizState>((set) => ({
   stereoHover: null,
   setView: (view) => set({ view }),
   // building the walk here keeps timeline + grid in perfect sync
-  setGrid: (grid) => set({ grid, walk: grid ? buildWalk(grid) : [] }),
+  setGrid: (grid) =>
+    set({ grid, walk: grid ? buildWalk(grid) : [], selectedCohort: null }),
+  selectedCohort: null,
+  // swap the playback timeline: a single cohort's diagonal, or back to all years
+  selectCohort: (birth) =>
+    set((s) => {
+      if (!s.grid) return {}
+      return {
+        selectedCohort: birth,
+        walk: birth === null ? buildWalk(s.grid) : buildCohortWalk(s.grid, birth),
+        stepIndex: 0,
+        playing: false,
+      }
+    }),
   setStereoHover: (stereoHover) => set({ stereoHover }),
   walk: [],
   playing: false,

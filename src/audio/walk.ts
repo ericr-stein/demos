@@ -37,6 +37,36 @@ export interface WalkStep {
   yearStart: boolean
 }
 
+/**
+ * Alternative timeline: follow ONE birth cohort along its diagonal —
+ * (year, age = year − birth) for every year in the data, ages 0..99.
+ * Selected by clicking a cohort line in the stereogram. Same WalkStep
+ * shape, so playback, dot and sonification work unchanged; expect a much
+ * shorter walk (≤ one step per year of data), and monotonically falling
+ * counts — survivorship made audible.
+ */
+export function buildCohortWalk(
+  grid: PopulationGrid,
+  birth: number,
+): WalkStep[] {
+  const steps: WalkStep[] = []
+  for (let yi = 0; yi < grid.years.length; yi++) {
+    const age = grid.years[yi] - birth
+    if (age < 0 || age > 99) continue
+    const count = grid.value[yi][age]
+    steps.push({
+      index: steps.length,
+      year: grid.years[yi],
+      age,
+      born: birth,
+      count,
+      norm: count / grid.maxValue,
+      yearStart: steps.length === 0,
+    })
+  }
+  return steps
+}
+
 export function buildWalk(grid: PopulationGrid): WalkStep[] {
   const steps: WalkStep[] = []
   for (let yi = 0; yi < grid.years.length; yi++) {
