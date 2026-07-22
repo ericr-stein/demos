@@ -74,6 +74,38 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
     return geo
   }, [grid, nY, nA, pos])
 
+  // ── skirt walls + floor: close the surface into a solid block, so the
+  // shape reads as a mountain. The walls are data too: the age-0 wall is
+  // births per year, the first/last-year walls are population pyramids. ──
+  const walls = useMemo(() => {
+    const strips: [number, number][][] = [
+      grid.years.map((_, yi) => [yi, 0]), // age-0 edge (births)
+      grid.years.map((_, yi) => [yi, nA - 1]), // oldest-age edge
+      grid.ages.map((_, ai) => [0, ai]), // first-year pyramid
+      grid.ages.map((_, ai) => [nY - 1, ai]), // last-year pyramid
+    ]
+    const positions: number[] = []
+    for (const strip of strips) {
+      for (let k = 0; k < strip.length - 1; k++) {
+        const [y0, a0] = strip[k]
+        const [y1, a1] = strip[k + 1]
+        const t0 = pos(y0, a0, grid.value[y0][a0])
+        const t1 = pos(y1, a1, grid.value[y1][a1])
+        const b0 = pos(y0, a0, 0)
+        const b1 = pos(y1, a1, 0)
+        // two triangles per quad: t0-t1-b0, t1-b1-b0
+        positions.push(...t0, ...t1, ...b0, ...t1, ...b1, ...b0)
+      }
+    }
+    const geo = new THREE.BufferGeometry()
+    geo.setAttribute(
+      'position',
+      new THREE.BufferAttribute(new Float32Array(positions), 3),
+    )
+    geo.computeVertexNormals()
+    return geo
+  }, [grid, nY, nA, pos])
+
   // ── red year profiles: the surface sliced at each year ──
   const yearProfiles = useMemo(
     () =>
@@ -136,6 +168,16 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
         onPointerOut={() => setStereoHover(null)}>
         <meshStandardMaterial vertexColors side={THREE.DoubleSide}
           roughness={0.75} metalness={0.05} />
+      </mesh>
+
+      <mesh geometry={walls}>
+        <meshStandardMaterial color="#8f815f" side={THREE.DoubleSide}
+          roughness={0.85} metalness={0.05} />
+      </mesh>
+      {/* floor sealing the block's underside */}
+      <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.005, 0]}>
+        <planeGeometry args={[X_SPAN, Z_SPAN]} />
+        <meshStandardMaterial color="#6f6449" roughness={0.9} />
       </mesh>
 
       {yearProfiles.map((pts, i) => (
