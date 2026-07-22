@@ -1,0 +1,1602 @@
+[
+ {
+  "id": 0,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 1",
+  "lat": 46.69658111799508,
+  "lon": 9.836096070706844,
+  "population": 147830
+ },
+ {
+  "id": 1,
+  "region": "Bern",
+  "name": "Bern district 2",
+  "lat": 46.85318508436903,
+  "lon": 7.229525974486023,
+  "population": 124400
+ },
+ {
+  "id": 2,
+  "region": "Winterthur",
+  "name": "Winterthur district 3",
+  "lat": 46.74463411020115,
+  "lon": 7.124656804022379,
+  "population": 293283
+ },
+ {
+  "id": 3,
+  "region": "Lugano",
+  "name": "Lugano district 4",
+  "lat": 46.41400302685797,
+  "lon": 6.887642270768993,
+  "population": 71969
+ },
+ {
+  "id": 4,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 5",
+  "lat": 47.02124179685488,
+  "lon": 6.0172932838322595,
+  "population": 61829
+ },
+ {
+  "id": 5,
+  "region": "Winterthur",
+  "name": "Winterthur district 6",
+  "lat": 45.902418532595036,
+  "lon": 8.665457957424223,
+  "population": 1071
+ },
+ {
+  "id": 6,
+  "region": "Geneva",
+  "name": "Geneva district 7",
+  "lat": 45.923562784865496,
+  "lon": 6.835600532242097,
+  "population": 218382
+ },
+ {
+  "id": 7,
+  "region": "Lucerne",
+  "name": "Lucerne district 8",
+  "lat": 45.85424721864983,
+  "lon": 6.778523555025458,
+  "population": 261752
+ },
+ {
+  "id": 8,
+  "region": "Lausanne",
+  "name": "Lausanne district 9",
+  "lat": 47.41804596753791,
+  "lon": 7.4375778555404395,
+  "population": 55305
+ },
+ {
+  "id": 9,
+  "region": "Zurich",
+  "name": "Zurich district 10",
+  "lat": 45.90278546903282,
+  "lon": 8.50469900679309,
+  "population": 111028
+ },
+ {
+  "id": 10,
+  "region": "Geneva",
+  "name": "Geneva district 11",
+  "lat": 47.091388809215275,
+  "lon": 6.942797199008055,
+  "population": 21320
+ },
+ {
+  "id": 11,
+  "region": "Lugano",
+  "name": "Lugano district 12",
+  "lat": 47.51742183854803,
+  "lon": 8.285983301815577,
+  "population": 8536
+ },
+ {
+  "id": 12,
+  "region": "Geneva",
+  "name": "Geneva district 13",
+  "lat": 46.38598327403888,
+  "lon": 6.336125833913684,
+  "population": 142478
+ },
+ {
+  "id": 13,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 14",
+  "lat": 47.186176233179864,
+  "lon": 10.175279551651329,
+  "population": 1918
+ },
+ {
+  "id": 14,
+  "region": "Thun",
+  "name": "Thun district 15",
+  "lat": 46.66227499414235,
+  "lon": 10.240325478720479,
+  "population": 3794
+ },
+ {
+  "id": 15,
+  "region": "Bern",
+  "name": "Bern district 16",
+  "lat": 45.83168581053614,
+  "lon": 7.622005586628802,
+  "population": 65425
+ },
+ {
+  "id": 16,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 17",
+  "lat": 47.59911594651639,
+  "lon": 6.349120825412683,
+  "population": 176705
+ },
+ {
+  "id": 17,
+  "region": "Thun",
+  "name": "Thun district 18",
+  "lat": 46.35650294339284,
+  "lon": 9.179634276079014,
+  "population": 6470
+ },
+ {
+  "id": 18,
+  "region": "Lucerne",
+  "name": "Lucerne district 19",
+  "lat": 47.44378351625055,
+  "lon": 6.5426665804116055,
+  "population": 396653
+ },
+ {
+  "id": 19,
+  "region": "Lucerne",
+  "name": "Lucerne district 20",
+  "lat": 47.63224032958969,
+  "lon": 7.952956664026715,
+  "population": 102796
+ },
+ {
+  "id": 20,
+  "region": "Basel",
+  "name": "Basel district 21",
+  "lat": 46.992478207405654,
+  "lon": 7.453310078009963,
+  "population": 182759
+ },
+ {
+  "id": 21,
+  "region": "Geneva",
+  "name": "Geneva district 22",
+  "lat": 46.69952547289431,
+  "lon": 9.794065957074054,
+  "population": 162111
+ },
+ {
+  "id": 22,
+  "region": "Thun",
+  "name": "Thun district 23",
+  "lat": 47.5803962607868,
+  "lon": 7.943511614925228,
+  "population": 88796
+ },
+ {
+  "id": 23,
+  "region": "Geneva",
+  "name": "Geneva district 24",
+  "lat": 46.001754879206416,
+  "lon": 9.13524680561386,
+  "population": 22978
+ },
+ {
+  "id": 24,
+  "region": "Lugano",
+  "name": "Lugano district 25",
+  "lat": 47.6095509824343,
+  "lon": 6.421386061585508,
+  "population": 63329
+ },
+ {
+  "id": 25,
+  "region": "Winterthur",
+  "name": "Winterthur district 26",
+  "lat": 46.05995856383815,
+  "lon": 10.377358874073252,
+  "population": 6377
+ },
+ {
+  "id": 26,
+  "region": "Lugano",
+  "name": "Lugano district 27",
+  "lat": 47.19938245946541,
+  "lon": 7.004319585626945,
+  "population": 44810
+ },
+ {
+  "id": 27,
+  "region": "Bern",
+  "name": "Bern district 28",
+  "lat": 47.10933277867734,
+  "lon": 7.511690198094584,
+  "population": 8794
+ },
+ {
+  "id": 28,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 29",
+  "lat": 47.57375773247331,
+  "lon": 7.4687008374603465,
+  "population": 224593
+ },
+ {
+  "id": 29,
+  "region": "Basel",
+  "name": "Basel district 30",
+  "lat": 46.06278560468927,
+  "lon": 9.886659852345474,
+  "population": 34244
+ },
+ {
+  "id": 30,
+  "region": "Zurich",
+  "name": "Zurich district 31",
+  "lat": 47.27484483523294,
+  "lon": 8.858687184518203,
+  "population": 288227
+ },
+ {
+  "id": 31,
+  "region": "Thun",
+  "name": "Thun district 32",
+  "lat": 46.2179775621742,
+  "lon": 8.71769647160545,
+  "population": 67968
+ },
+ {
+  "id": 32,
+  "region": "Bern",
+  "name": "Bern district 33",
+  "lat": 45.89494812879711,
+  "lon": 9.174983051139861,
+  "population": 169931
+ },
+ {
+  "id": 33,
+  "region": "Geneva",
+  "name": "Geneva district 34",
+  "lat": 46.350969368312505,
+  "lon": 7.514699441730045,
+  "population": 1058
+ },
+ {
+  "id": 34,
+  "region": "Geneva",
+  "name": "Geneva district 35",
+  "lat": 47.787040466163305,
+  "lon": 8.575582493562251,
+  "population": 389662
+ },
+ {
+  "id": 35,
+  "region": "Bern",
+  "name": "Bern district 36",
+  "lat": 46.141668130364266,
+  "lon": 8.52433867554646,
+  "population": 19509
+ },
+ {
+  "id": 36,
+  "region": "Basel",
+  "name": "Basel district 37",
+  "lat": 46.66882171221077,
+  "lon": 7.882599980919622,
+  "population": 156986
+ },
+ {
+  "id": 37,
+  "region": "Basel",
+  "name": "Basel district 38",
+  "lat": 46.47224159976467,
+  "lon": 10.030386299011298,
+  "population": 25518
+ },
+ {
+  "id": 38,
+  "region": "Lausanne",
+  "name": "Lausanne district 39",
+  "lat": 47.02173966327682,
+  "lon": 8.458629336557351,
+  "population": 107634
+ },
+ {
+  "id": 39,
+  "region": "Geneva",
+  "name": "Geneva district 40",
+  "lat": 46.450731217116115,
+  "lon": 7.344511040719226,
+  "population": 24273
+ },
+ {
+  "id": 40,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 41",
+  "lat": 46.24178255833685,
+  "lon": 6.761870671645738,
+  "population": 162065
+ },
+ {
+  "id": 41,
+  "region": "Basel",
+  "name": "Basel district 42",
+  "lat": 46.04982433021068,
+  "lon": 7.412076642271131,
+  "population": 1148
+ },
+ {
+  "id": 42,
+  "region": "Lucerne",
+  "name": "Lucerne district 43",
+  "lat": 46.21537547251209,
+  "lon": 8.166903442237526,
+  "population": 36589
+ },
+ {
+  "id": 43,
+  "region": "Lugano",
+  "name": "Lugano district 44",
+  "lat": 47.62525590015575,
+  "lon": 9.652647920069285,
+  "population": 52182
+ },
+ {
+  "id": 44,
+  "region": "Bern",
+  "name": "Bern district 45",
+  "lat": 47.53526070453226,
+  "lon": 8.365538491867483,
+  "population": 259966
+ },
+ {
+  "id": 45,
+  "region": "Winterthur",
+  "name": "Winterthur district 46",
+  "lat": 46.70020558983087,
+  "lon": 6.659681734163314,
+  "population": 121459
+ },
+ {
+  "id": 46,
+  "region": "Winterthur",
+  "name": "Winterthur district 47",
+  "lat": 46.21681931307539,
+  "lon": 7.753396250191145,
+  "population": 88977
+ },
+ {
+  "id": 47,
+  "region": "Thun",
+  "name": "Thun district 48",
+  "lat": 46.78399869771674,
+  "lon": 9.867669795756228,
+  "population": 262142
+ },
+ {
+  "id": 48,
+  "region": "Lugano",
+  "name": "Lugano district 49",
+  "lat": 45.9070892564021,
+  "lon": 6.312031391076744,
+  "population": 5717
+ },
+ {
+  "id": 49,
+  "region": "Lucerne",
+  "name": "Lucerne district 50",
+  "lat": 47.15331373894587,
+  "lon": 9.423597075976431,
+  "population": 392511
+ },
+ {
+  "id": 50,
+  "region": "Winterthur",
+  "name": "Winterthur district 51",
+  "lat": 47.06322757033631,
+  "lon": 9.766392250894569,
+  "population": 269773
+ },
+ {
+  "id": 51,
+  "region": "Lucerne",
+  "name": "Lucerne district 52",
+  "lat": 46.50216456474736,
+  "lon": 8.011080259107985,
+  "population": 290245
+ },
+ {
+  "id": 52,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 53",
+  "lat": 46.49849906302988,
+  "lon": 10.218892872682773,
+  "population": 124992
+ },
+ {
+  "id": 53,
+  "region": "Basel",
+  "name": "Basel district 54",
+  "lat": 47.48933970574289,
+  "lon": 6.682175773079507,
+  "population": 33361
+ },
+ {
+  "id": 54,
+  "region": "Zurich",
+  "name": "Zurich district 55",
+  "lat": 45.97100481921807,
+  "lon": 8.91445472824853,
+  "population": 180865
+ },
+ {
+  "id": 55,
+  "region": "Thun",
+  "name": "Thun district 56",
+  "lat": 47.55892942911014,
+  "lon": 8.098114612977952,
+  "population": 169400
+ },
+ {
+  "id": 56,
+  "region": "Bern",
+  "name": "Bern district 57",
+  "lat": 46.346202115248886,
+  "lon": 6.6261238240404055,
+  "population": 1199
+ },
+ {
+  "id": 57,
+  "region": "Geneva",
+  "name": "Geneva district 58",
+  "lat": 46.68196842558682,
+  "lon": 8.559437610092573,
+  "population": 174742
+ },
+ {
+  "id": 58,
+  "region": "Lugano",
+  "name": "Lugano district 59",
+  "lat": 47.36958199525252,
+  "lon": 6.881662986706942,
+  "population": 145986
+ },
+ {
+  "id": 59,
+  "region": "Lucerne",
+  "name": "Lucerne district 60",
+  "lat": 46.687087543495,
+  "lon": 8.11062561138533,
+  "population": 58113
+ },
+ {
+  "id": 60,
+  "region": "Lausanne",
+  "name": "Lausanne district 61",
+  "lat": 46.46384355165064,
+  "lon": 7.384178773616441,
+  "population": 4351
+ },
+ {
+  "id": 61,
+  "region": "Lucerne",
+  "name": "Lucerne district 62",
+  "lat": 46.33479979233816,
+  "lon": 8.387508176732808,
+  "population": 89905
+ },
+ {
+  "id": 62,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 63",
+  "lat": 46.67437862064689,
+  "lon": 6.606714091845788,
+  "population": 1000
+ },
+ {
+  "id": 63,
+  "region": "Bern",
+  "name": "Bern district 64",
+  "lat": 47.68648046273738,
+  "lon": 6.311841854243539,
+  "population": 283928
+ },
+ {
+  "id": 64,
+  "region": "Lausanne",
+  "name": "Lausanne district 65",
+  "lat": 46.804932025447485,
+  "lon": 6.444560714182444,
+  "population": 245796
+ },
+ {
+  "id": 65,
+  "region": "Zurich",
+  "name": "Zurich district 66",
+  "lat": 46.54122333386913,
+  "lon": 7.033693664590828,
+  "population": 166609
+ },
+ {
+  "id": 66,
+  "region": "Lucerne",
+  "name": "Lucerne district 67",
+  "lat": 45.98923453567549,
+  "lon": 10.348767182906158,
+  "population": 195926
+ },
+ {
+  "id": 67,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 68",
+  "lat": 47.3927668553777,
+  "lon": 8.469637093017809,
+  "population": 233456
+ },
+ {
+  "id": 68,
+  "region": "Lucerne",
+  "name": "Lucerne district 69",
+  "lat": 46.15366487689316,
+  "lon": 6.351387648261152,
+  "population": 2139
+ },
+ {
+  "id": 69,
+  "region": "Zurich",
+  "name": "Zurich district 70",
+  "lat": 46.32555019082501,
+  "lon": 9.0246322019957,
+  "population": 147081
+ },
+ {
+  "id": 70,
+  "region": "Lucerne",
+  "name": "Lucerne district 71",
+  "lat": 47.75329244947061,
+  "lon": 6.099597904714756,
+  "population": 40663
+ },
+ {
+  "id": 71,
+  "region": "Basel",
+  "name": "Basel district 72",
+  "lat": 46.36826192466542,
+  "lon": 9.748956501949579,
+  "population": 85399
+ },
+ {
+  "id": 72,
+  "region": "Geneva",
+  "name": "Geneva district 73",
+  "lat": 47.6885948699899,
+  "lon": 10.284440290066414,
+  "population": 15632
+ },
+ {
+  "id": 73,
+  "region": "Lucerne",
+  "name": "Lucerne district 74",
+  "lat": 47.52003157204017,
+  "lon": 10.209059988730587,
+  "population": 156330
+ },
+ {
+  "id": 74,
+  "region": "Lucerne",
+  "name": "Lucerne district 75",
+  "lat": 47.41983497207984,
+  "lon": 7.403891653055325,
+  "population": 69618
+ },
+ {
+  "id": 75,
+  "region": "Lugano",
+  "name": "Lugano district 76",
+  "lat": 46.89945656452328,
+  "lon": 9.092746718670242,
+  "population": 92495
+ },
+ {
+  "id": 76,
+  "region": "Lucerne",
+  "name": "Lucerne district 77",
+  "lat": 47.733943255804476,
+  "lon": 10.429417794453911,
+  "population": 206792
+ },
+ {
+  "id": 77,
+  "region": "Basel",
+  "name": "Basel district 78",
+  "lat": 47.06310790516436,
+  "lon": 9.005639992305078,
+  "population": 279102
+ },
+ {
+  "id": 78,
+  "region": "Basel",
+  "name": "Basel district 79",
+  "lat": 47.55585937313735,
+  "lon": 7.42631357407663,
+  "population": 291476
+ },
+ {
+  "id": 79,
+  "region": "Lausanne",
+  "name": "Lausanne district 80",
+  "lat": 46.479294343106446,
+  "lon": 8.397872762521729,
+  "population": 257189
+ },
+ {
+  "id": 80,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 81",
+  "lat": 47.535470062121746,
+  "lon": 9.111836850992404,
+  "population": 4536
+ },
+ {
+  "id": 81,
+  "region": "Geneva",
+  "name": "Geneva district 82",
+  "lat": 47.722887116204944,
+  "lon": 8.189902001526207,
+  "population": 16838
+ },
+ {
+  "id": 82,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 83",
+  "lat": 47.34242016468197,
+  "lon": 9.322348153218627,
+  "population": 173809
+ },
+ {
+  "id": 83,
+  "region": "Bern",
+  "name": "Bern district 84",
+  "lat": 47.4934633878991,
+  "lon": 10.061514314264059,
+  "population": 88603
+ },
+ {
+  "id": 84,
+  "region": "Lausanne",
+  "name": "Lausanne district 85",
+  "lat": 45.94502214314416,
+  "lon": 8.24958003940992,
+  "population": 302613
+ },
+ {
+  "id": 85,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 86",
+  "lat": 46.64224822092801,
+  "lon": 7.992521956446581,
+  "population": 120061
+ },
+ {
+  "id": 86,
+  "region": "Lugano",
+  "name": "Lugano district 87",
+  "lat": 46.83573184367269,
+  "lon": 6.194930892786942,
+  "population": 5599
+ },
+ {
+  "id": 87,
+  "region": "Zurich",
+  "name": "Zurich district 88",
+  "lat": 46.04230368714779,
+  "lon": 7.689102229080163,
+  "population": 250671
+ },
+ {
+  "id": 88,
+  "region": "Winterthur",
+  "name": "Winterthur district 89",
+  "lat": 47.166699796635655,
+  "lon": 6.381372833973728,
+  "population": 1078
+ },
+ {
+  "id": 89,
+  "region": "Geneva",
+  "name": "Geneva district 90",
+  "lat": 47.20004665823653,
+  "lon": 7.213526332634501,
+  "population": 272225
+ },
+ {
+  "id": 90,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 91",
+  "lat": 47.61789289554581,
+  "lon": 9.996633342001587,
+  "population": 28981
+ },
+ {
+  "id": 91,
+  "region": "Zurich",
+  "name": "Zurich district 92",
+  "lat": 47.054437012132254,
+  "lon": 7.079106079414487,
+  "population": 64911
+ },
+ {
+  "id": 92,
+  "region": "Geneva",
+  "name": "Geneva district 93",
+  "lat": 46.320260021090505,
+  "lon": 9.242043925914913,
+  "population": 78639
+ },
+ {
+  "id": 93,
+  "region": "Lausanne",
+  "name": "Lausanne district 94",
+  "lat": 46.98385108048096,
+  "lon": 6.4908527311636135,
+  "population": 217268
+ },
+ {
+  "id": 94,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 95",
+  "lat": 47.63722971472889,
+  "lon": 6.524657065048814,
+  "population": 1335
+ },
+ {
+  "id": 95,
+  "region": "Zurich",
+  "name": "Zurich district 96",
+  "lat": 46.48103894498199,
+  "lon": 7.08069203607738,
+  "population": 11140
+ },
+ {
+  "id": 96,
+  "region": "Thun",
+  "name": "Thun district 97",
+  "lat": 46.962398680578914,
+  "lon": 9.780021128011867,
+  "population": 28284
+ },
+ {
+  "id": 97,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 98",
+  "lat": 45.86416309950873,
+  "lon": 9.306197018944658,
+  "population": 228985
+ },
+ {
+  "id": 98,
+  "region": "Basel",
+  "name": "Basel district 99",
+  "lat": 46.208874221146104,
+  "lon": 9.534679524949752,
+  "population": 73519
+ },
+ {
+  "id": 99,
+  "region": "Bern",
+  "name": "Bern district 100",
+  "lat": 45.964983296766874,
+  "lon": 9.476494663394988,
+  "population": 49959
+ },
+ {
+  "id": 100,
+  "region": "Winterthur",
+  "name": "Winterthur district 101",
+  "lat": 47.38424204587936,
+  "lon": 8.220882502617314,
+  "population": 354327
+ },
+ {
+  "id": 101,
+  "region": "Bern",
+  "name": "Bern district 102",
+  "lat": 46.090996474213895,
+  "lon": 8.484533399809152,
+  "population": 150522
+ },
+ {
+  "id": 102,
+  "region": "Geneva",
+  "name": "Geneva district 103",
+  "lat": 47.34032941162586,
+  "lon": 7.085839386912994,
+  "population": 3678
+ },
+ {
+  "id": 103,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 104",
+  "lat": 47.00557599235326,
+  "lon": 8.499437295366079,
+  "population": 8642
+ },
+ {
+  "id": 104,
+  "region": "Thun",
+  "name": "Thun district 105",
+  "lat": 46.84351864708587,
+  "lon": 9.353016030276194,
+  "population": 1222
+ },
+ {
+  "id": 105,
+  "region": "Thun",
+  "name": "Thun district 106",
+  "lat": 46.96072676936164,
+  "lon": 7.277753919828683,
+  "population": 1192
+ },
+ {
+  "id": 106,
+  "region": "Basel",
+  "name": "Basel district 107",
+  "lat": 47.22390311369672,
+  "lon": 9.42450689803809,
+  "population": 13630
+ },
+ {
+  "id": 107,
+  "region": "Winterthur",
+  "name": "Winterthur district 108",
+  "lat": 46.71162254987284,
+  "lon": 6.821912135230377,
+  "population": 133437
+ },
+ {
+  "id": 108,
+  "region": "Lucerne",
+  "name": "Lucerne district 109",
+  "lat": 46.176764282118526,
+  "lon": 9.836246692459099,
+  "population": 1905
+ },
+ {
+  "id": 109,
+  "region": "Bern",
+  "name": "Bern district 110",
+  "lat": 47.78997693741694,
+  "lon": 6.95247899077367,
+  "population": 62089
+ },
+ {
+  "id": 110,
+  "region": "Lucerne",
+  "name": "Lucerne district 111",
+  "lat": 47.039262376911935,
+  "lon": 8.180406439932995,
+  "population": 150327
+ },
+ {
+  "id": 111,
+  "region": "Bern",
+  "name": "Bern district 112",
+  "lat": 47.758081449382004,
+  "lon": 9.731556277605705,
+  "population": 29229
+ },
+ {
+  "id": 112,
+  "region": "Geneva",
+  "name": "Geneva district 113",
+  "lat": 46.836212761420754,
+  "lon": 9.429932783707045,
+  "population": 54127
+ },
+ {
+  "id": 113,
+  "region": "Lausanne",
+  "name": "Lausanne district 114",
+  "lat": 46.30437110336497,
+  "lon": 8.24703057250008,
+  "population": 1090
+ },
+ {
+  "id": 114,
+  "region": "Winterthur",
+  "name": "Winterthur district 115",
+  "lat": 46.52720247786492,
+  "lon": 7.917143882601522,
+  "population": 13694
+ },
+ {
+  "id": 115,
+  "region": "Lucerne",
+  "name": "Lucerne district 116",
+  "lat": 45.88196317637339,
+  "lon": 8.996338272700086,
+  "population": 1427
+ },
+ {
+  "id": 116,
+  "region": "Thun",
+  "name": "Thun district 117",
+  "lat": 47.326375799439845,
+  "lon": 8.960637970129028,
+  "population": 237251
+ },
+ {
+  "id": 117,
+  "region": "Zurich",
+  "name": "Zurich district 118",
+  "lat": 46.973346538562325,
+  "lon": 8.470179110881872,
+  "population": 65400
+ },
+ {
+  "id": 118,
+  "region": "Lucerne",
+  "name": "Lucerne district 119",
+  "lat": 46.750772405602035,
+  "lon": 8.027437763172202,
+  "population": 102240
+ },
+ {
+  "id": 119,
+  "region": "Zurich",
+  "name": "Zurich district 120",
+  "lat": 47.21656659869477,
+  "lon": 6.0166750472271815,
+  "population": 159823
+ },
+ {
+  "id": 120,
+  "region": "Bern",
+  "name": "Bern district 121",
+  "lat": 46.53799925902858,
+  "lon": 9.265975709538907,
+  "population": 335639
+ },
+ {
+  "id": 121,
+  "region": "Geneva",
+  "name": "Geneva district 122",
+  "lat": 47.03620790382847,
+  "lon": 10.06179471197538,
+  "population": 59070
+ },
+ {
+  "id": 122,
+  "region": "Zurich",
+  "name": "Zurich district 123",
+  "lat": 46.934877681732175,
+  "lon": 8.227141955983825,
+  "population": 52959
+ },
+ {
+  "id": 123,
+  "region": "Lausanne",
+  "name": "Lausanne district 124",
+  "lat": 47.30761407148093,
+  "lon": 6.545993032981642,
+  "population": 173821
+ },
+ {
+  "id": 124,
+  "region": "Lucerne",
+  "name": "Lucerne district 125",
+  "lat": 47.691162624582645,
+  "lon": 9.749050318496302,
+  "population": 64614
+ },
+ {
+  "id": 125,
+  "region": "Zurich",
+  "name": "Zurich district 126",
+  "lat": 47.62099225372076,
+  "lon": 6.280068020685576,
+  "population": 77534
+ },
+ {
+  "id": 126,
+  "region": "Lausanne",
+  "name": "Lausanne district 127",
+  "lat": 47.1637824235484,
+  "lon": 8.498208713717759,
+  "population": 117302
+ },
+ {
+  "id": 127,
+  "region": "Winterthur",
+  "name": "Winterthur district 128",
+  "lat": 47.12857979414984,
+  "lon": 10.428983478806913,
+  "population": 380785
+ },
+ {
+  "id": 128,
+  "region": "Thun",
+  "name": "Thun district 129",
+  "lat": 47.4233083428815,
+  "lon": 10.308424255228601,
+  "population": 238114
+ },
+ {
+  "id": 129,
+  "region": "Bern",
+  "name": "Bern district 130",
+  "lat": 45.97849501594901,
+  "lon": 10.468289893004112,
+  "population": 1090
+ },
+ {
+  "id": 130,
+  "region": "Lausanne",
+  "name": "Lausanne district 131",
+  "lat": 47.54857537820935,
+  "lon": 9.056342286989093,
+  "population": 213245
+ },
+ {
+  "id": 131,
+  "region": "Basel",
+  "name": "Basel district 132",
+  "lat": 47.48117811949923,
+  "lon": 8.041909883846529,
+  "population": 328477
+ },
+ {
+  "id": 132,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 133",
+  "lat": 46.301069516409186,
+  "lon": 6.702639249851927,
+  "population": 35322
+ },
+ {
+  "id": 133,
+  "region": "Lugano",
+  "name": "Lugano district 134",
+  "lat": 45.90078264866024,
+  "lon": 6.621106061618775,
+  "population": 12214
+ },
+ {
+  "id": 134,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 135",
+  "lat": 46.54854773236438,
+  "lon": 8.859420708962716,
+  "population": 375947
+ },
+ {
+  "id": 135,
+  "region": "Lausanne",
+  "name": "Lausanne district 136",
+  "lat": 47.38510465221479,
+  "lon": 9.327651604427956,
+  "population": 1013
+ },
+ {
+  "id": 136,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 137",
+  "lat": 47.5505634361878,
+  "lon": 7.144695783499628,
+  "population": 109056
+ },
+ {
+  "id": 137,
+  "region": "Winterthur",
+  "name": "Winterthur district 138",
+  "lat": 46.73381716683507,
+  "lon": 7.716011587413959,
+  "population": 261184
+ },
+ {
+  "id": 138,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 139",
+  "lat": 46.430216357763854,
+  "lon": 8.090746898087673,
+  "population": 82548
+ },
+ {
+  "id": 139,
+  "region": "Thun",
+  "name": "Thun district 140",
+  "lat": 46.145360263250765,
+  "lon": 8.67548406519927,
+  "population": 1607
+ },
+ {
+  "id": 140,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 141",
+  "lat": 47.39092580107972,
+  "lon": 7.951985501102172,
+  "population": 110857
+ },
+ {
+  "id": 141,
+  "region": "Winterthur",
+  "name": "Winterthur district 142",
+  "lat": 46.5838243576698,
+  "lon": 8.649782150401734,
+  "population": 5698
+ },
+ {
+  "id": 142,
+  "region": "Thun",
+  "name": "Thun district 143",
+  "lat": 46.16253862408921,
+  "lon": 9.057357725221664,
+  "population": 169855
+ },
+ {
+  "id": 143,
+  "region": "Lucerne",
+  "name": "Lucerne district 144",
+  "lat": 46.89318348718807,
+  "lon": 8.836073214188218,
+  "population": 305038
+ },
+ {
+  "id": 144,
+  "region": "Lugano",
+  "name": "Lugano district 145",
+  "lat": 45.80028936192393,
+  "lon": 6.271802572533488,
+  "population": 2129
+ },
+ {
+  "id": 145,
+  "region": "Thun",
+  "name": "Thun district 146",
+  "lat": 45.80013164663687,
+  "lon": 6.15599954361096,
+  "population": 80482
+ },
+ {
+  "id": 146,
+  "region": "Zurich",
+  "name": "Zurich district 147",
+  "lat": 47.290201557986435,
+  "lon": 8.853146203793585,
+  "population": 1000
+ },
+ {
+  "id": 147,
+  "region": "Lausanne",
+  "name": "Lausanne district 148",
+  "lat": 47.45199341718107,
+  "lon": 7.555619801860303,
+  "population": 8000
+ },
+ {
+  "id": 148,
+  "region": "Lugano",
+  "name": "Lugano district 149",
+  "lat": 47.105322390981016,
+  "lon": 6.224615849205293,
+  "population": 125102
+ },
+ {
+  "id": 149,
+  "region": "Lucerne",
+  "name": "Lucerne district 150",
+  "lat": 47.50205686148256,
+  "lon": 8.610171131556854,
+  "population": 45410
+ },
+ {
+  "id": 150,
+  "region": "Lucerne",
+  "name": "Lucerne district 151",
+  "lat": 46.622435147128996,
+  "lon": 8.656753990100697,
+  "population": 7683
+ },
+ {
+  "id": 151,
+  "region": "Bern",
+  "name": "Bern district 152",
+  "lat": 47.21460151644423,
+  "lon": 9.296796553186141,
+  "population": 17883
+ },
+ {
+  "id": 152,
+  "region": "Thun",
+  "name": "Thun district 153",
+  "lat": 47.686626330204305,
+  "lon": 7.93960676912684,
+  "population": 110847
+ },
+ {
+  "id": 153,
+  "region": "Basel",
+  "name": "Basel district 154",
+  "lat": 47.132360719330606,
+  "lon": 10.404789203312248,
+  "population": 300910
+ },
+ {
+  "id": 154,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 155",
+  "lat": 46.4867096866481,
+  "lon": 10.091470452491194,
+  "population": 74747
+ },
+ {
+  "id": 155,
+  "region": "Thun",
+  "name": "Thun district 156",
+  "lat": 46.26659901179373,
+  "lon": 6.678380207391456,
+  "population": 24148
+ },
+ {
+  "id": 156,
+  "region": "Thun",
+  "name": "Thun district 157",
+  "lat": 46.81152997789904,
+  "lon": 10.391795947914943,
+  "population": 1026
+ },
+ {
+  "id": 157,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 158",
+  "lat": 47.00697869360447,
+  "lon": 10.449262173380703,
+  "population": 13576
+ },
+ {
+  "id": 158,
+  "region": "Thun",
+  "name": "Thun district 159",
+  "lat": 46.2477644120343,
+  "lon": 10.255754902842455,
+  "population": 21764
+ },
+ {
+  "id": 159,
+  "region": "Lucerne",
+  "name": "Lucerne district 160",
+  "lat": 46.57967648627236,
+  "lon": 6.9760038130916655,
+  "population": 18767
+ },
+ {
+  "id": 160,
+  "region": "Thun",
+  "name": "Thun district 161",
+  "lat": 47.05405401643365,
+  "lon": 7.421511907596141,
+  "population": 75499
+ },
+ {
+  "id": 161,
+  "region": "Basel",
+  "name": "Basel district 162",
+  "lat": 46.69192079985514,
+  "lon": 6.793077300768346,
+  "population": 99254
+ },
+ {
+  "id": 162,
+  "region": "Winterthur",
+  "name": "Winterthur district 163",
+  "lat": 47.11823372701183,
+  "lon": 8.43239836965222,
+  "population": 298689
+ },
+ {
+  "id": 163,
+  "region": "Lucerne",
+  "name": "Lucerne district 164",
+  "lat": 47.50838349545374,
+  "lon": 7.996875960147008,
+  "population": 127464
+ },
+ {
+  "id": 164,
+  "region": "Lausanne",
+  "name": "Lausanne district 165",
+  "lat": 46.97613273486495,
+  "lon": 8.971334741218016,
+  "population": 124851
+ },
+ {
+  "id": 165,
+  "region": "Lausanne",
+  "name": "Lausanne district 166",
+  "lat": 46.14614442847669,
+  "lon": 6.024358204565942,
+  "population": 170946
+ },
+ {
+  "id": 166,
+  "region": "Basel",
+  "name": "Basel district 167",
+  "lat": 46.453140729758886,
+  "lon": 6.085291072027758,
+  "population": 3215
+ },
+ {
+  "id": 167,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 168",
+  "lat": 46.36224891170859,
+  "lon": 6.193505086004734,
+  "population": 58252
+ },
+ {
+  "id": 168,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 169",
+  "lat": 46.07318566758185,
+  "lon": 9.187699250061996,
+  "population": 9592
+ },
+ {
+  "id": 169,
+  "region": "Geneva",
+  "name": "Geneva district 170",
+  "lat": 47.04133335519582,
+  "lon": 7.530918275588192,
+  "population": 29984
+ },
+ {
+  "id": 170,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 171",
+  "lat": 46.735620620381084,
+  "lon": 9.671640887274407,
+  "population": 1825
+ },
+ {
+  "id": 171,
+  "region": "Bern",
+  "name": "Bern district 172",
+  "lat": 46.49147776113823,
+  "lon": 9.981075468356721,
+  "population": 274152
+ },
+ {
+  "id": 172,
+  "region": "Thun",
+  "name": "Thun district 173",
+  "lat": 46.73156128469854,
+  "lon": 6.78402985248249,
+  "population": 143278
+ },
+ {
+  "id": 173,
+  "region": "St. Gallen",
+  "name": "St. Gallen district 174",
+  "lat": 47.30410391204059,
+  "lon": 10.231476930901408,
+  "population": 42822
+ },
+ {
+  "id": 174,
+  "region": "Basel",
+  "name": "Basel district 175",
+  "lat": 46.12476240955293,
+  "lon": 10.058005793136545,
+  "population": 100553
+ },
+ {
+  "id": 175,
+  "region": "Bern",
+  "name": "Bern district 176",
+  "lat": 45.869561990443614,
+  "lon": 9.858520116540603,
+  "population": 2113
+ },
+ {
+  "id": 176,
+  "region": "Lucerne",
+  "name": "Lucerne district 177",
+  "lat": 46.8454780976288,
+  "lon": 8.69144366250839,
+  "population": 377548
+ },
+ {
+  "id": 177,
+  "region": "Lucerne",
+  "name": "Lucerne district 178",
+  "lat": 47.150127032026646,
+  "lon": 8.359733299934305,
+  "population": 309050
+ },
+ {
+  "id": 178,
+  "region": "Winterthur",
+  "name": "Winterthur district 179",
+  "lat": 45.97595507903024,
+  "lon": 7.013466665404849,
+  "population": 325841
+ },
+ {
+  "id": 179,
+  "region": "Basel",
+  "name": "Basel district 180",
+  "lat": 47.20654253680259,
+  "lon": 8.41285116376821,
+  "population": 52558
+ },
+ {
+  "id": 180,
+  "region": "Basel",
+  "name": "Basel district 181",
+  "lat": 46.54365622550249,
+  "lon": 7.512165246647783,
+  "population": 134611
+ },
+ {
+  "id": 181,
+  "region": "Winterthur",
+  "name": "Winterthur district 182",
+  "lat": 47.56256359927356,
+  "lon": 7.072464261436835,
+  "population": 107839
+ },
+ {
+  "id": 182,
+  "region": "Lausanne",
+  "name": "Lausanne district 183",
+  "lat": 46.83341518435627,
+  "lon": 9.27979468088597,
+  "population": 99836
+ },
+ {
+  "id": 183,
+  "region": "Lausanne",
+  "name": "Lausanne district 184",
+  "lat": 47.79417822156101,
+  "lon": 6.997600493836217,
+  "population": 49220
+ },
+ {
+  "id": 184,
+  "region": "Zurich",
+  "name": "Zurich district 185",
+  "lat": 46.10911835376173,
+  "lon": 6.217680927598849,
+  "population": 3046
+ },
+ {
+  "id": 185,
+  "region": "Basel",
+  "name": "Basel district 186",
+  "lat": 47.33143899794668,
+  "lon": 8.37149797892198,
+  "population": 55765
+ },
+ {
+  "id": 186,
+  "region": "Basel",
+  "name": "Basel district 187",
+  "lat": 47.794080565404144,
+  "lon": 9.26675058400724,
+  "population": 51962
+ },
+ {
+  "id": 187,
+  "region": "Basel",
+  "name": "Basel district 188",
+  "lat": 47.29874554108828,
+  "lon": 7.311842823517509,
+  "population": 105365
+ },
+ {
+  "id": 188,
+  "region": "Geneva",
+  "name": "Geneva district 189",
+  "lat": 46.02556675551459,
+  "lon": 9.799914327333681,
+  "population": 36105
+ },
+ {
+  "id": 189,
+  "region": "Bern",
+  "name": "Bern district 190",
+  "lat": 47.69658933877945,
+  "lon": 6.196567137725651,
+  "population": 197372
+ },
+ {
+  "id": 190,
+  "region": "Lucerne",
+  "name": "Lucerne district 191",
+  "lat": 45.93088858919218,
+  "lon": 8.788343649473973,
+  "population": 288335
+ },
+ {
+  "id": 191,
+  "region": "Bern",
+  "name": "Bern district 192",
+  "lat": 47.48547823093831,
+  "lon": 6.988003479782492,
+  "population": 373633
+ },
+ {
+  "id": 192,
+  "region": "Lausanne",
+  "name": "Lausanne district 193",
+  "lat": 46.63493405207991,
+  "lon": 6.094244106556289,
+  "population": 40182
+ },
+ {
+  "id": 193,
+  "region": "Zurich",
+  "name": "Zurich district 194",
+  "lat": 46.56564306486398,
+  "lon": 8.168630056665279,
+  "population": 41620
+ },
+ {
+  "id": 194,
+  "region": "Zurich",
+  "name": "Zurich district 195",
+  "lat": 47.72463172692805,
+  "lon": 9.4453763240017,
+  "population": 11120
+ },
+ {
+  "id": 195,
+  "region": "Bern",
+  "name": "Bern district 196",
+  "lat": 46.179999521654096,
+  "lon": 9.10120602871757,
+  "population": 224892
+ },
+ {
+  "id": 196,
+  "region": "Thun",
+  "name": "Thun district 197",
+  "lat": 47.50408311625942,
+  "lon": 9.9931268094806,
+  "population": 12995
+ },
+ {
+  "id": 197,
+  "region": "Lugano",
+  "name": "Lugano district 198",
+  "lat": 46.81807353645563,
+  "lon": 9.702500197570771,
+  "population": 9203
+ },
+ {
+  "id": 198,
+  "region": "Zurich",
+  "name": "Zurich district 199",
+  "lat": 47.48304188689217,
+  "lon": 10.086377813480794,
+  "population": 336379
+ },
+ {
+  "id": 199,
+  "region": "Geneva",
+  "name": "Geneva district 200",
+  "lat": 46.070897369366136,
+  "lon": 6.048404588713311,
+  "population": 356539
+ }
+]

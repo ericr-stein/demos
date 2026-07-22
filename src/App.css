@@ -1,0 +1,70 @@
+.app {
+  position: fixed;
+  inset: 0;
+}
+
+.hud {
+  position: absolute;
+  z-index: 10;
+  color: #dfe6f2;
+  font-family: ui-monospace, 'Cascadia Code', Consolas, monospace;
+  pointer-events: none;
+}
+
+.hud-top {
+  top: 16px;
+  left: 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.hud-top h1 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 2px;
+}
+
+.hud-top .sub {
+  font-size: 12px;
+  opacity: 0.65;
+}
+
+.hud button.audio {
+  pointer-events: auto;
+  background: rgba(79, 143, 234, 0.15);
+  border: 1px solid rgba(79, 143, 234, 0.5);
+  color: #dfe6f2;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.hud button.audio:hover:not(:disabled) {
+  background: rgba(79, 143, 234, 0.35);
+}
+
+.hud button.audio.on {
+  border-color: rgba(242, 177, 52, 0.6);
+  background: rgba(242, 177, 52, 0.12);
+  cursor: default;
+}
+
+.hud-info {
+  left: 20px;
+  bottom: 20px;
+  background: rgba(11, 14, 20, 0.75);
+  border: 1px solid #2a3450;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  line-height: 1.5;
+  backdrop-filter: blur(4px);
+}
+
+.hud-info .pop {
+  color: #f2b134;
+}
