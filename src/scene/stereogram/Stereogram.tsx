@@ -154,12 +154,15 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
       </lineSegments>
 
       {/* axis labels */}
-      {grid.years.map((y, yi) => (
+      {grid.years.filter((y) => y % 5 === 0).map((y) => {
+        const yi = grid.years.indexOf(y)
+        return (
         <Text key={y} position={pos(yi, nA - 1, 0).add(new THREE.Vector3(0, 0, 2))}
-          fontSize={0.8} color="#8fa1c4" rotation={[-Math.PI / 2, 0, 0]}>
+          fontSize={1.1} color="#8fa1c4" rotation={[-Math.PI / 2, 0, 0]}>
           {String(y)}
         </Text>
-      ))}
+        )
+      })}
       {grid.ages.filter((a) => a % 10 === 0).map((a) => (
         <Text key={a} position={pos(0, a, 0).add(new THREE.Vector3(-2.2, 0, 0))}
           fontSize={0.8} color="#8fa1c4" rotation={[-Math.PI / 2, 0, 0]}>
