@@ -4,6 +4,7 @@ import { useFrame } from '@react-three/fiber'
 import { Trail } from '@react-three/drei'
 import { useVizStore } from '../../store'
 import { sonifyStep } from '../../audio/engine'
+import { transportActive } from '../../audio/player'
 import type { PopulationGrid } from '../../data/grid'
 
 /**
@@ -43,7 +44,9 @@ export function WalkDot({
     if (walk.length === 0 || !group.current) return
 
     let index = stepIndex
-    if (playing) {
+    // while Tone.Transport drives (audio on), it advances stepIndex itself —
+    // this frame clock only runs as the silent fallback
+    if (playing && !transportActive()) {
       acc.current += delta * stepsPerSecond
       const whole = Math.floor(acc.current)
       if (whole > 0) {

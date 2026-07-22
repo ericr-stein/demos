@@ -4,6 +4,12 @@ import { usePoints, useVizStore } from './store'
 import { loadPopulationData } from './data/load'
 import { loadPopulationGrid } from './data/grid'
 import { enableAudio } from './audio/engine'
+import {
+  applyTempo,
+  startTransportWalk,
+  stopTransportWalk,
+  transportActive,
+} from './audio/player'
 import './App.css'
 
 const SOURCE_LABEL = {
@@ -93,8 +99,14 @@ export default function App() {
           <button
             className="transport"
             onClick={() => {
-              if (!playing && stepIndex >= walk.length - 1) setStepIndex(0)
-              setPlaying(!playing)
+              if (playing) {
+                stopTransportWalk()
+                setPlaying(false)
+              } else {
+                if (stepIndex >= walk.length - 1) setStepIndex(0)
+                startTransportWalk() // no-op false if audio off → rAF fallback
+                setPlaying(true)
+              }
             }}
           >
             {playing ? '⏸' : '▶'}
@@ -102,7 +114,9 @@ export default function App() {
           <button
             className="transport"
             onClick={() => {
+              stopTransportWalk()
               setStepIndex(0)
+              startTransportWalk()
               setPlaying(true)
             }}
           >
@@ -111,12 +125,16 @@ export default function App() {
           <select
             className="transport"
             value={stepsPerSecond}
-            onChange={(e) => setSpeed(Number(e.target.value))}
+            onChange={(e) => {
+              const sps = Number(e.target.value)
+              setSpeed(sps)
+              if (transportActive()) applyTempo(sps)
+            }}
           >
-            <option value={12}>½×</option>
-            <option value={24}>1×</option>
-            <option value={48}>2×</option>
-            <option value={96}>4×</option>
+            <option value={4}>60 bpm</option>
+            <option value={8}>120 bpm</option>
+            <option value={16}>240 bpm</option>
+            <option value={32}>480 bpm</option>
           </select>
           <span className="year-label">
             {walk[stepIndex].year} · age {walk[stepIndex].age} ·{' '}
