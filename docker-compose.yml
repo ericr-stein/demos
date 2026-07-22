@@ -1,0 +1,32 @@
+name: demos
+services:
+  demos:
+    build: .
+    image: demos:latest
+    container_name: demos
+    labels:
+      com.box.project: demos
+      com.box.service: web
+      com.box.tier: frontend
+      com.box.managed-by: agent
+    networks: [edge]
+    restart: unless-stopped
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    image: demos-api:latest
+    container_name: demos-api
+    environment:
+      # injected from Infisical /demos by the systemd unit
+      - DEMOS_DB_PASSWORD=${DEMOS_DB_PASSWORD:?inject_via_infisical}
+    labels:
+      com.box.project: demos
+      com.box.service: api
+      com.box.tier: backend
+      com.box.managed-by: agent
+    networks: [edge, internal]
+    restart: unless-stopped
+networks:
+  edge: { external: true }
+  internal: { external: true }

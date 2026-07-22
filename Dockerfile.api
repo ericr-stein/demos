@@ -1,0 +1,15 @@
+FROM node:24-slim
+WORKDIR /app
+ENV NODE_ENV=production
+RUN corepack enable
+COPY package.json pnpm-lock.yaml ./
+# pnpm 11 enforces a 24h minimumReleaseAge policy by default, which rejects the
+# freshly-published transitive binaries pinned in the (valid) frozen lockfile.
+ENV PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+RUN pnpm install --frozen-lockfile --prod
+COPY server ./server
+COPY scripts ./scripts
+EXPOSE 3000
+HEALTHCHECK --interval=30s --timeout=5s --start-period=5s --retries=3 \
+  CMD node -e "fetch('http://127.0.0.1:3000/api/health').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))"
+CMD ["node", "server/index.mjs"]
