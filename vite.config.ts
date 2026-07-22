@@ -11,11 +11,8 @@ export default defineConfig({
     watch: process.env.VITE_FORCE_POLLING
       ? { usePolling: true, interval: 300 }
       : undefined,
-    // dev container is reached through Caddy at demos-dev.nonsh.site
-    allowedHosts: ['demos-dev.nonsh.site'],
     proxy: {
-      // the dev containers set this: demos-api:3000 on the devbox stack,
-      // api:3000 in the local stack; bare `make dev` falls back to :3000
+      // the dev stack sets this to api:3000; bare `pnpm dev` falls back
       '/api': process.env.DEMOS_API_PROXY ?? 'http://127.0.0.1:3000',
     },
   },

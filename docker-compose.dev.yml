@@ -1,36 +1,63 @@
-# Devbox hot-reload dev server: Vite + HMR against the live source tree,
-# proxying /api to the deployed demos-api container.
+# Self-contained dev stack: Vite dev server with HMR (edit src/, the browser
+# updates instantly), own Postgres, no external networks, no secrets manager.
+# nginx exists only in the production image (Dockerfile).
 #
-#   make dev-box   → https://demos-dev.nonsh.site (tailnet, Authelia-gated)
-#
-# node_modules and the pnpm store live in named volumes so installs never
+# Source is bind-mounted; node_modules and the pnpm store live in named
+# volumes — fast and reliable on Windows/macOS mounts, and installs never
 # touch the host tree.
-name: demos-dev
+#
+#   make dev      # http://localhost:5173, /api proxied by Vite
+#   make import   # load the KTZH population dataset
+name: demos-local
 services:
   dev:
     image: node:24-slim
-    container_name: demos-dev
     working_dir: /app
     command:
       - sh
       - -c
       - corepack enable && pnpm install && pnpm dev --host
     environment:
-      - DEMOS_API_PROXY=http://demos-api:3000
+      - DEMOS_API_PROXY=http://api:3000
       - PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+      - VITE_FORCE_POLLING=1
+    ports:
+      - "${DEMOS_LOCAL_PORT:-5173}:5173"
     volumes:
       - .:/app
       - node_modules:/app/node_modules
       - pnpm_store:/app/.pnpm-store
-    labels:
-      com.box.project: demos
-      com.box.service: dev
-      com.box.tier: frontend
-      com.box.managed-by: agent
-    networks: [edge]
+    depends_on: [api]
     restart: unless-stopped
-networks:
-  edge: { external: true }
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile.api
+    environment:
+      - PGHOST=postgres
+      - PGPORT=5432
+      - PGUSER=demos
+      - PGDATABASE=demos
+      - DEMOS_DB_PASSWORD=${DEMOS_DB_PASSWORD:-demos-local-dev}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      - POSTGRES_USER=demos
+      - POSTGRES_DB=demos
+      - POSTGRES_PASSWORD=${DEMOS_DB_PASSWORD:-demos-local-dev}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U demos"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+    restart: unless-stopped
 volumes:
+  pgdata:
   node_modules:
   pnpm_store:
