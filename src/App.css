@@ -53,6 +53,32 @@
   cursor: default;
 }
 
+.hud-year {
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(11, 14, 20, 0.75);
+  border: 1px solid #2a3450;
+  border-radius: 8px;
+  padding: 10px 14px;
+  backdrop-filter: blur(4px);
+}
+
+.hud-year input[type='range'] {
+  pointer-events: auto;
+  width: 240px;
+  accent-color: #f2b134;
+}
+
+.hud-year .year-label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #f2b134;
+  min-width: 3em;
+}
+
 .hud-info {
   left: 20px;
   bottom: 20px;

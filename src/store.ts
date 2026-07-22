@@ -1,26 +1,38 @@
 import { create } from 'zustand'
 import type { PopulationPoint } from './data/types'
+import type { PopulationData } from './data/load'
 
 interface VizState {
-  points: PopulationPoint[]
-  source: 'live' | 'sample' | 'loading'
+  byYear: Record<number, PopulationPoint[]>
+  years: number[]
+  year: number
+  source: PopulationData['source'] | 'loading'
   hoveredId: number | null
   selectedId: number | null
   audioEnabled: boolean
-  setData: (points: PopulationPoint[], source: 'live' | 'sample') => void
+  setData: (data: PopulationData) => void
+  setYear: (year: number) => void
   setHovered: (id: number | null) => void
   setSelected: (id: number | null) => void
   setAudioEnabled: (on: boolean) => void
 }
 
 export const useVizStore = create<VizState>((set) => ({
-  points: [],
+  byYear: {},
+  years: [],
+  year: 0,
   source: 'loading',
   hoveredId: null,
   selectedId: null,
   audioEnabled: false,
-  setData: (points, source) => set({ points, source }),
+  setData: ({ byYear, years, source }) =>
+    set({ byYear, years, source, year: years[years.length - 1] }),
+  setYear: (year) => set({ year }),
   setHovered: (id) => set({ hoveredId: id }),
   setSelected: (id) => set({ selectedId: id }),
   setAudioEnabled: (on) => set({ audioEnabled: on }),
 }))
+
+export const usePoints = () =>
+  useVizStore((s) => s.byYear[s.year] ?? EMPTY_POINTS)
+const EMPTY_POINTS: PopulationPoint[] = []
