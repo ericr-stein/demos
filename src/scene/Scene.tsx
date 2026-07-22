@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { Canvas, useThree } from '@react-three/fiber'
 import { OrbitControls, Grid, Stars } from '@react-three/drei'
+import { EffectComposer, Bloom } from '@react-three/postprocessing'
 import { PointField } from './PointField'
 import { Stereogram } from './stereogram/Stereogram'
 import { useVizStore } from '../store'
@@ -40,6 +41,11 @@ export function Scene() {
       {view === 'stereogram' && grid && <Stereogram grid={grid} />}
       <CameraRig view={view} />
       <OrbitControls makeDefault enableDamping maxPolarAngle={Math.PI / 2.05} />
+      {/* bloom only grabs colors brighter than 1.0 (toneMapped=false), i.e.
+          the walk dot and its trail — the rest of the scene stays crisp */}
+      <EffectComposer>
+        <Bloom luminanceThreshold={1} intensity={0.85} mipmapBlur />
+      </EffectComposer>
     </Canvas>
   )
 }

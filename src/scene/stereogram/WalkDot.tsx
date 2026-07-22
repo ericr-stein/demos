@@ -1,6 +1,7 @@
 import { useRef } from 'react'
 import * as THREE from 'three'
 import { useFrame } from '@react-three/fiber'
+import { Trail } from '@react-three/drei'
 import { useVizStore } from '../../store'
 import { sonifyStep } from '../../audio/engine'
 import type { PopulationGrid } from '../../data/grid'
@@ -16,8 +17,11 @@ import type { PopulationGrid } from '../../data/grid'
  *   3. lerp the dot toward its target so motion looks continuous even
  *      though the data is discrete
  *
- * The glow is three cheap layers: an emissive core, an additive halo
- * sprite, and a PointLight so the surface itself catches the shine.
+ * The glow: the core's emissive color is pushed past 1.0 with
+ * toneMapped=false, and the Bloom pass in Scene.tsx only picks up
+ * colors that bright — so the dot and its comet trail bloom while the
+ * rest of the scene stays crisp. A PointLight rides along so the
+ * surface itself catches the shine.
  */
 export function WalkDot({
   grid,
@@ -54,37 +58,40 @@ export function WalkDot({
       }
     }
 
-    // visual: glide toward the current step's position on the surface
+    // visual: glide toward the current step's position, floating just
+    // above the surface so the sphere never clips into it
     const step = walk[index]
     const yi = grid.years.indexOf(step.year)
     const target = pos(yi, step.age, step.count)
+    target.y += 0.42
     group.current.position.lerp(target, Math.min(1, delta * 14))
   })
 
   return (
-    <group ref={group}>
-      {/* emissive core */}
-      <mesh>
-        <sphereGeometry args={[0.35, 16, 16]} />
-        <meshStandardMaterial
-          color="#fff3c4"
-          emissive="#ffcf5e"
-          emissiveIntensity={2.5}
-          toneMapped={false}
-        />
-      </mesh>
-      {/* additive halo */}
-      <sprite scale={[2.6, 2.6, 1]}>
-        <spriteMaterial
-          color="#ffd97a"
-          transparent
-          opacity={0.35}
-          blending={THREE.AdditiveBlending}
-          depthWrite={false}
-        />
-      </sprite>
-      {/* the light that makes the surface glow around the dot */}
-      <pointLight color="#ffd97a" intensity={40} distance={9} decay={2} />
-    </group>
+    <>
+      {/* comet tail: Trail samples the moving mesh every frame and draws a
+          tapering ribbon; the super-bright color makes the bloom pass
+          light it up */}
+      <Trail
+        width={2.2}
+        length={7}
+        decay={1.2}
+        attenuation={(t) => t * t}
+        color={new THREE.Color(3.5, 2.2, 0.7)}
+      >
+        <group ref={group}>
+          {/* emissive core — brighter than 1.0 so bloom catches it */}
+          <mesh>
+            <sphereGeometry args={[0.3, 16, 16]} />
+            <meshBasicMaterial
+              color={new THREE.Color(4, 3, 1.1)}
+              toneMapped={false}
+            />
+          </mesh>
+          {/* the light that makes the surface glow around the dot */}
+          <pointLight color="#ffd97a" intensity={40} distance={9} decay={2} />
+        </group>
+      </Trail>
+    </>
   )
 }
