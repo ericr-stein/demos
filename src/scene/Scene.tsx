@@ -1,8 +1,22 @@
-import { Canvas } from '@react-three/fiber'
+import { useEffect } from 'react'
+import { Canvas, useThree } from '@react-three/fiber'
 import { OrbitControls, Grid, Stars } from '@react-three/drei'
 import { PointField } from './PointField'
 import { Stereogram } from './stereogram/Stereogram'
 import { useVizStore } from '../store'
+
+/** Reframe the camera when the view changes (user can orbit freely after). */
+function CameraRig({ view }: { view: 'map' | 'stereogram' }) {
+  const camera = useThree((s) => s.camera)
+  const controls = useThree((s) => s.controls) as { target?: { set: (x: number, y: number, z: number) => void }; update?: () => void } | null
+  useEffect(() => {
+    if (view === 'stereogram') camera.position.set(34, 16, 40)
+    else camera.position.set(0, 22, 34)
+    controls?.target?.set(0, view === 'stereogram' ? 4 : 0, 0)
+    controls?.update?.()
+  }, [view, camera, controls])
+  return null
+}
 
 export function Scene() {
   const view = useVizStore((s) => s.view)
@@ -24,6 +38,7 @@ export function Scene() {
       />
       {view === 'map' && <PointField />}
       {view === 'stereogram' && grid && <Stereogram grid={grid} />}
+      <CameraRig view={view} />
       <OrbitControls makeDefault enableDamping maxPolarAngle={Math.PI / 2.05} />
     </Canvas>
   )
