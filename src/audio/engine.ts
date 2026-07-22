@@ -1,5 +1,6 @@
 import * as Tone from 'tone'
 import type { PopulationPoint } from '../data/types'
+import type { WalkStep } from './walk'
 
 /**
  * Minimal sonification engine. Tone.js requires a user gesture before the
@@ -37,6 +38,28 @@ export function sonifyPoint(point: PopulationPoint | null): void {
 /** Generic sonification: any value against its scale maximum. */
 export function sonifyValue(id: number, value: number, max: number): void {
   play(id, Math.sqrt(value / max))
+}
+
+/**
+ * ── SONIFICATION OF THE 3D WALK — this function is YOURS ────────────────
+ *
+ * Called once per step while the walk plays (default ~24 steps/s), in
+ * timeline order, only when audio is enabled. `step` carries everything:
+ * year, age, born, count, norm (0..1), yearStart — see walk.ts.
+ *
+ * The body below is a plain placeholder (population → pitch). Replace it
+ * with your Tone.js design; example-integration.ts in this folder has a
+ * fuller commented example (synth setup, yearStart accents, smoothing).
+ * Build your instruments/effects once at module level or inside
+ * enableAudio(), NOT in here — this runs 24× per second.
+ */
+export function sonifyStep(step: WalkStep): void {
+  if (!started || !synth) return
+  const midi = 84 - Math.min(Math.max(Math.sqrt(step.norm), 0), 1) * 36
+  synth.triggerAttackRelease(
+    Tone.Frequency(midi, 'midi').toFrequency(),
+    '32n',
+  )
 }
 
 function play(id: number, norm: number): void {

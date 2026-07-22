@@ -6,6 +6,7 @@ import { useVizStore } from '../../store'
 import { sonifyValue } from '../../audio/engine'
 import type { PopulationGrid } from '../../data/grid'
 import { marchingSquares } from './isolines'
+import { WalkDot } from './WalkDot'
 
 /**
  * Perozzo stereogram (1879): a population surface over year × age.
@@ -194,6 +195,9 @@ export function Stereogram({ grid }: { grid: PopulationGrid }) {
       <lineSegments geometry={isolineGeo}>
         <lineBasicMaterial color="#4bc47f" transparent opacity={0.9} />
       </lineSegments>
+
+      {/* the 3D walk: glowing dot + playback clock (see WalkDot.tsx) */}
+      <WalkDot grid={grid} pos={pos} />
 
       {/* axis labels */}
       {grid.years.filter((y) => y % 5 === 0).map((y) => {

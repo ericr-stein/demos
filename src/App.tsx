@@ -29,6 +29,13 @@ export default function App() {
   const setView = useVizStore((s) => s.setView)
   const setGrid = useVizStore((s) => s.setGrid)
   const setAudioEnabled = useVizStore((s) => s.setAudioEnabled)
+  const walk = useVizStore((s) => s.walk)
+  const playing = useVizStore((s) => s.playing)
+  const stepIndex = useVizStore((s) => s.stepIndex)
+  const stepsPerSecond = useVizStore((s) => s.stepsPerSecond)
+  const setPlaying = useVizStore((s) => s.setPlaying)
+  const setStepIndex = useVizStore((s) => s.setStepIndex)
+  const setSpeed = useVizStore((s) => s.setSpeed)
 
   useEffect(() => {
     loadPopulationData().then(setData)
@@ -80,6 +87,43 @@ export default function App() {
           {audioEnabled ? '♪ audio on — hover the field' : 'enable audio'}
         </button>
       </header>
+
+      {view === 'stereogram' && walk.length > 0 && (
+        <div className="hud hud-year">
+          <button
+            className="transport"
+            onClick={() => {
+              if (!playing && stepIndex >= walk.length - 1) setStepIndex(0)
+              setPlaying(!playing)
+            }}
+          >
+            {playing ? '⏸' : '▶'}
+          </button>
+          <button
+            className="transport"
+            onClick={() => {
+              setStepIndex(0)
+              setPlaying(true)
+            }}
+          >
+            ↺
+          </button>
+          <select
+            className="transport"
+            value={stepsPerSecond}
+            onChange={(e) => setSpeed(Number(e.target.value))}
+          >
+            <option value={12}>½×</option>
+            <option value={24}>1×</option>
+            <option value={48}>2×</option>
+            <option value={96}>4×</option>
+          </select>
+          <span className="year-label">
+            {walk[stepIndex].year} · age {walk[stepIndex].age} ·{' '}
+            {walk[stepIndex].count.toLocaleString('de-CH')}
+          </span>
+        </div>
+      )}
 
       {view === 'map' && years.length > 1 && (
         <div className="hud hud-year">

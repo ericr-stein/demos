@@ -111,6 +111,24 @@
   background: rgba(232, 217, 176, 0.25);
 }
 
+.hud button.transport,
+.hud select.transport {
+  pointer-events: auto;
+  background: rgba(255, 217, 122, 0.12);
+  border: 1px solid rgba(255, 217, 122, 0.45);
+  color: #ffd97a;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font: inherit;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.hud button.transport:hover,
+.hud select.transport:hover {
+  background: rgba(255, 217, 122, 0.25);
+}
+
 .hud-info .k {
   font-weight: 600;
 }

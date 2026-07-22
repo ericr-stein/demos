@@ -2,6 +2,7 @@ import { create } from 'zustand'
 import type { PopulationPoint } from './data/types'
 import type { PopulationData } from './data/load'
 import type { PopulationGrid } from './data/grid'
+import { buildWalk, type WalkStep } from './audio/walk'
 
 export interface StereoHover {
   year: number
@@ -16,6 +17,14 @@ interface VizState {
   setView: (view: 'map' | 'stereogram') => void
   setGrid: (grid: PopulationGrid | null) => void
   setStereoHover: (h: StereoHover | null) => void
+  // ── 3D walk playback ──
+  walk: WalkStep[]
+  playing: boolean
+  stepIndex: number
+  stepsPerSecond: number
+  setPlaying: (on: boolean) => void
+  setStepIndex: (i: number) => void
+  setSpeed: (sps: number) => void
   byYear: Record<number, PopulationPoint[]>
   years: number[]
   year: number
@@ -35,8 +44,16 @@ export const useVizStore = create<VizState>((set) => ({
   grid: null,
   stereoHover: null,
   setView: (view) => set({ view }),
-  setGrid: (grid) => set({ grid }),
+  // building the walk here keeps timeline + grid in perfect sync
+  setGrid: (grid) => set({ grid, walk: grid ? buildWalk(grid) : [] }),
   setStereoHover: (stereoHover) => set({ stereoHover }),
+  walk: [],
+  playing: false,
+  stepIndex: 0,
+  stepsPerSecond: 24,
+  setPlaying: (playing) => set({ playing }),
+  setStepIndex: (stepIndex) => set({ stepIndex }),
+  setSpeed: (stepsPerSecond) => set({ stepsPerSecond }),
   byYear: {},
   years: [],
   year: 0,
