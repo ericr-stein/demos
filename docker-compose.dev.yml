@@ -1,0 +1,35 @@
+# Hot-reload dev server: Vite + HMR against the live source tree.
+#
+#   make dev-up   → https://demos-dev.nonsh.site (tailnet, Authelia-gated)
+#
+# Runs as uid 1000 so nothing in the bind-mounted tree ends up root-owned.
+# /api is proxied by Vite to the deployed demos-api container.
+name: demos-dev
+services:
+  dev:
+    image: node:24-slim
+    container_name: demos-dev
+    working_dir: /app
+    user: "1000:1000"
+    command:
+      - sh
+      - -c
+      - mkdir -p /tmp/bin &&
+        corepack enable --install-directory /tmp/bin &&
+        export PATH=/tmp/bin:$$PATH &&
+        pnpm install && pnpm dev --host
+    environment:
+      - HOME=/tmp
+      - DEMOS_API_PROXY=http://demos-api:3000
+      - PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+    volumes:
+      - .:/app
+    labels:
+      com.box.project: demos
+      com.box.service: dev
+      com.box.tier: frontend
+      com.box.managed-by: agent
+    networks: [edge]
+    restart: unless-stopped
+networks:
+  edge: { external: true }

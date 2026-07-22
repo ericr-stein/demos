@@ -2,9 +2,11 @@ COMPOSE_LOCAL := docker compose -f docker-compose.local.yml
 KTZH_URL := https://daten.statistik.zh.ch/ogd/daten/ressourcen/KTZH_00000254_00001282.csv
 URL ?= $(KTZH_URL)
 TABLE ?= ktzh_population
-PORT ?= 8080
+PORT ?= 5173
 
-.PHONY: help dev build local-up local-down local-clean local-logs local-import local-psql deploy logs
+COMPOSE_DEV := docker compose -f docker-compose.dev.yml
+
+.PHONY: help dev dev-up dev-down dev-logs build local-up local-down local-clean local-logs local-import local-psql deploy logs
 
 help: ## Show this help
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
@@ -12,12 +14,22 @@ help: ## Show this help
 dev: ## Vite dev server with HMR (no Docker, http://localhost:5173)
 	pnpm install && pnpm dev
 
+dev-up: ## Devbox: HMR dev server in Docker → https://demos-dev.nonsh.site
+	$(COMPOSE_DEV) up -d
+	@echo "→ https://demos-dev.nonsh.site (edit src/, browser updates instantly)"
+
+dev-down: ## Devbox: stop the dev server
+	$(COMPOSE_DEV) down
+
+dev-logs: ## Devbox: tail dev server logs
+	$(COMPOSE_DEV) logs -f
+
 build: ## Typecheck + production build to dist/
 	pnpm build
 
-local-up: ## Build + start the self-contained local stack (web on :$(PORT))
+local-up: ## Local dev stack: Vite HMR + api + postgres (no nginx) on :$(PORT)
 	DEMOS_LOCAL_PORT=$(PORT) $(COMPOSE_LOCAL) up -d --build
-	@echo "→ http://localhost:$(PORT)  (API at /api/, e.g. /api/datasets)"
+	@echo "→ http://localhost:$(PORT)  — edit src/, the browser updates instantly"
 	@echo "→ 'make local-import' to load the KTZH population dataset"
 
 local-down: ## Stop the local stack (data volume kept)

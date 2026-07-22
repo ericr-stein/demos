@@ -37,11 +37,17 @@ Docker multi-stage build (pnpm build → nginx). Deployed on the devbox as
 container). CI (typecheck + build) runs on GitHub-hosted runners for
 pushes and PRs.
 
-## Local run (any machine with Docker)
+## Development
+
+Hot reload everywhere — edit `src/`, the browser updates instantly:
 
 ```bash
-make local-up      # self-contained stack: web + api + own Postgres → http://localhost:8080
+make local-up      # any machine: Vite HMR + api + own Postgres → http://localhost:5173
 make local-import  # load the KTZH population dataset (or URL=... TABLE=... for any OGD CSV)
 make local-clean   # stop and delete the local database
+make dev-up        # devbox: HMR dev server against the deployed API → https://demos-dev.nonsh.site
 make help          # all targets
 ```
+
+nginx only exists in the production image, where it serves the built bundle
+and routes `/api`; dev setups use the Vite dev server + proxy instead.
