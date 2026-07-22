@@ -1,51 +1,44 @@
-COMPOSE_LOCAL := docker compose -f docker-compose.local.yml
+COMPOSE_DEV := docker compose -f docker-compose.local.yml
+COMPOSE_BOX := docker compose -f docker-compose.dev.yml
 KTZH_URL := https://daten.statistik.zh.ch/ogd/daten/ressourcen/KTZH_00000254_00001282.csv
 URL ?= $(KTZH_URL)
 TABLE ?= ktzh_population
 PORT ?= 5173
 
-COMPOSE_DEV := docker compose -f docker-compose.dev.yml
-
-.PHONY: help dev dev-up dev-down dev-logs build local-up local-down local-clean local-logs local-import local-psql deploy logs
+.PHONY: help dev dev-down dev-logs dev-clean import psql dev-box dev-box-down dev-box-logs deploy logs
 
 help: ## Show this help
 	@grep -E '^[a-z-]+:.*##' $(MAKEFILE_LIST) | awk -F':.*## ' '{printf "  \033[36m%-14s\033[0m %s\n", $$1, $$2}'
 
-dev: ## Vite dev server with HMR (no Docker, http://localhost:5173)
-	pnpm install && pnpm dev
+dev: ## Start dev: Vite HMR + api + own Postgres → http://localhost:5173
+	DEMOS_LOCAL_PORT=$(PORT) $(COMPOSE_DEV) up -d --build
+	@echo "→ http://localhost:$(PORT)  — edit src/, the browser updates instantly"
+	@echo "→ 'make import' to load the KTZH population dataset"
 
-dev-up: ## Devbox: HMR dev server in Docker → https://demos-dev.nonsh.site
-	$(COMPOSE_DEV) up -d
-	@echo "→ https://demos-dev.nonsh.site (edit src/, browser updates instantly)"
+dev-down: ## Stop dev (database volume kept)
+	$(COMPOSE_DEV) down --remove-orphans
 
-dev-down: ## Devbox: stop the dev server
-	$(COMPOSE_DEV) down
-
-dev-logs: ## Devbox: tail dev server logs
+dev-logs: ## Tail dev logs
 	$(COMPOSE_DEV) logs -f
 
-build: ## Typecheck + production build to dist/
-	pnpm build
+dev-clean: ## Stop dev and DELETE its database volume
+	$(COMPOSE_DEV) down -v --remove-orphans
 
-local-up: ## Local dev stack: Vite HMR + api + postgres (no nginx) on :$(PORT)
-	DEMOS_LOCAL_PORT=$(PORT) $(COMPOSE_LOCAL) up -d --build
-	@echo "→ http://localhost:$(PORT)  — edit src/, the browser updates instantly"
-	@echo "→ 'make local-import' to load the KTZH population dataset"
+import: ## Import an OGD CSV into the dev database: make import [URL=...] [TABLE=...]
+	$(COMPOSE_DEV) run --rm api node scripts/import-ogd.mjs "$(URL)" "$(TABLE)"
 
-local-down: ## Stop the local stack (data volume kept)
-	$(COMPOSE_LOCAL) down
+psql: ## psql shell into the dev database
+	$(COMPOSE_DEV) exec postgres psql -U demos
 
-local-clean: ## Stop the local stack and DELETE its database volume
-	$(COMPOSE_LOCAL) down -v
+dev-box: ## Devbox only: HMR against the deployed API → https://demos-dev.nonsh.site
+	$(COMPOSE_BOX) up -d
+	@echo "→ https://demos-dev.nonsh.site (edit src/, browser updates instantly)"
 
-local-logs: ## Tail local stack logs
-	$(COMPOSE_LOCAL) logs -f
+dev-box-down: ## Devbox only: stop the devbox dev server
+	$(COMPOSE_BOX) down --remove-orphans
 
-local-import: ## Import an OGD CSV: make local-import [URL=...] [TABLE=...]
-	$(COMPOSE_LOCAL) run --rm api node scripts/import-ogd.mjs "$(URL)" "$(TABLE)"
-
-local-psql: ## psql shell into the local database
-	$(COMPOSE_LOCAL) exec postgres psql -U demos
+dev-box-logs: ## Devbox only: tail devbox dev server logs
+	$(COMPOSE_BOX) logs -f
 
 deploy: ## Devbox only: what the CD pipeline runs on push to main
 	bash deploy.sh

@@ -22,6 +22,7 @@ services:
       - HOME=/tmp
       - DEMOS_API_PROXY=http://api:3000
       - PNPM_CONFIG_MINIMUM_RELEASE_AGE=0
+      - VITE_FORCE_POLLING=1
     ports:
       - "${DEMOS_LOCAL_PORT:-5173}:5173"
     volumes:

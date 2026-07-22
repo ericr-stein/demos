@@ -39,14 +39,13 @@ pushes and PRs.
 
 ## Development
 
-Hot reload everywhere — edit `src/`, the browser updates instantly:
+Hot reload — edit `src/`, the browser updates instantly:
 
 ```bash
-make local-up      # any machine: Vite HMR + api + own Postgres → http://localhost:5173
-make local-import  # load the KTZH population dataset (or URL=... TABLE=... for any OGD CSV)
-make local-clean   # stop and delete the local database
-make dev-up        # devbox: HMR dev server against the deployed API → https://demos-dev.nonsh.site
-make help          # all targets
+make dev        # Vite HMR + api + own Postgres → http://localhost:5173
+make import     # load the KTZH population dataset (or URL=... TABLE=... for any OGD CSV)
+make dev-down   # stop (database kept); dev-clean deletes the database too
+make help       # all targets
 ```
 
 nginx only exists in the production image, where it serves the built bundle
