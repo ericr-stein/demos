@@ -24,14 +24,25 @@ export async function enableAudio(): Promise<void> {
 }
 
 export function sonifyPoint(point: PopulationPoint | null): void {
-  if (!started || !synth || !point || point.id === lastId) {
-    if (!point) lastId = null
+  if (!point) {
+    lastId = null
     return
   }
-  lastId = point.id
-  // log-scale population (~1k..400k) onto MIDI 84 (small) .. 48 (large)
+  // log-scale population (~1k..400k) onto a normalized 0..1
   const norm =
-    (Math.log10(point.population) - 3) / (Math.log10(400_000) - 3)
+    (Math.log10(Math.max(point.population, 1)) - 3) / (Math.log10(400_000) - 3)
+  play(point.id, norm)
+}
+
+/** Generic sonification: any value against its scale maximum. */
+export function sonifyValue(id: number, value: number, max: number): void {
+  play(id, Math.sqrt(value / max))
+}
+
+function play(id: number, norm: number): void {
+  if (!started || !synth || id === lastId) return
+  lastId = id
+  // 0..1 → MIDI 84 (small) .. 48 (large): bigger numbers sound lower
   const midi = 84 - Math.min(Math.max(norm, 0), 1) * 36
   synth.triggerAttackRelease(Tone.Frequency(midi, 'midi').toFrequency(), '16n')
 }

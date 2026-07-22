@@ -94,3 +94,26 @@
 .hud-info .pop {
   color: #f2b134;
 }
+
+.hud button.view-toggle {
+  pointer-events: auto;
+  background: rgba(232, 217, 176, 0.12);
+  border: 1px solid rgba(232, 217, 176, 0.45);
+  color: #e8d9b0;
+  border-radius: 6px;
+  padding: 4px 12px;
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.hud button.view-toggle:hover {
+  background: rgba(232, 217, 176, 0.25);
+}
+
+.hud-info .k {
+  font-weight: 600;
+}
+.hud-info .k.red { color: #e05b4b; }
+.hud-info .k.blue { color: #5b8fe0; }
+.hud-info .k.green { color: #4bc47f; }

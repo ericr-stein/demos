@@ -1,8 +1,21 @@
 import { create } from 'zustand'
 import type { PopulationPoint } from './data/types'
 import type { PopulationData } from './data/load'
+import type { PopulationGrid } from './data/grid'
+
+export interface StereoHover {
+  year: number
+  age: number
+  count: number
+}
 
 interface VizState {
+  view: 'map' | 'stereogram'
+  grid: PopulationGrid | null
+  stereoHover: StereoHover | null
+  setView: (view: 'map' | 'stereogram') => void
+  setGrid: (grid: PopulationGrid | null) => void
+  setStereoHover: (h: StereoHover | null) => void
   byYear: Record<number, PopulationPoint[]>
   years: number[]
   year: number
@@ -18,6 +31,12 @@ interface VizState {
 }
 
 export const useVizStore = create<VizState>((set) => ({
+  view: 'map',
+  grid: null,
+  stereoHover: null,
+  setView: (view) => set({ view }),
+  setGrid: (grid) => set({ grid }),
+  setStereoHover: (stereoHover) => set({ stereoHover }),
   byYear: {},
   years: [],
   year: 0,

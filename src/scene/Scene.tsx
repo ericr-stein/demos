@@ -1,8 +1,13 @@
 import { Canvas } from '@react-three/fiber'
 import { OrbitControls, Grid, Stars } from '@react-three/drei'
 import { PointField } from './PointField'
+import { Stereogram } from './stereogram/Stereogram'
+import { useVizStore } from '../store'
 
 export function Scene() {
+  const view = useVizStore((s) => s.view)
+  const grid = useVizStore((s) => s.grid)
+
   return (
     <Canvas camera={{ position: [0, 22, 34], fov: 45 }} dpr={[1, 2]}>
       <color attach="background" args={['#0b0e14']} />
@@ -17,7 +22,8 @@ export function Scene() {
         fadeDistance={80}
         infiniteGrid
       />
-      <PointField />
+      {view === 'map' && <PointField />}
+      {view === 'stereogram' && grid && <Stereogram grid={grid} />}
       <OrbitControls makeDefault enableDamping maxPolarAngle={Math.PI / 2.05} />
     </Canvas>
   )
