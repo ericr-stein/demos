@@ -33,7 +33,10 @@ services:
   cloudflared:
     image: cloudflare/cloudflared:latest
     container_name: demos-cloudflared
-    command: ["tunnel", "--no-autoupdate", "run"]
+    # --metrics exposes cloudflared's native Prometheus /metrics endpoint.
+    # 0.0.0.0:2000 so Prometheus can scrape it over the internal network
+    # (the endpoint is unauthenticated, hence kept off any public interface).
+    command: ["tunnel", "--no-autoupdate", "--metrics", "0.0.0.0:2000", "run"]
     environment:
       - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN:?inject_via_infisical}
     labels:
@@ -41,7 +44,8 @@ services:
       com.box.service: cloudflared
       com.box.tier: agent
       com.box.managed-by: agent
-    networks: [edge]
+    # edge: reach demos/demos-api + Cloudflare egress. internal: Prometheus scrape.
+    networks: [edge, internal]
     restart: unless-stopped
 networks:
   edge: { external: true }
