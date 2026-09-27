@@ -31,7 +31,7 @@ pnpm build      # typecheck + production build to dist/
 ## Deployment
 
 Docker multi-stage build (pnpm build → nginx). Deployed on the devbox as
-`demos.nonsh.site` behind Caddy/Authelia. Every push to `main` triggers
+`demos.nonsh.dev` behind Caddy/Authelia. Every push to `main` triggers
 `.github/workflows/deploy.yml` on a self-hosted runner, which runs
 `deploy.sh` (fetch + reset to `origin/main`, rebuild image, restart
 container). CI (typecheck + build) runs on GitHub-hosted runners for
