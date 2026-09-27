@@ -31,7 +31,7 @@ services:
   # VM). Routes demos.nonsh.site from the internet to demos/demos-api directly,
   # bypassing Caddy/Authelia — the tailnet route through Caddy stays gated.
   cloudflared:
-    image: cloudflare/cloudflared:latest
+    image: cloudflare/cloudflared:2026.9.3
     container_name: demos-cloudflared
     command: ["tunnel", "--no-autoupdate", "run"]
     environment:
