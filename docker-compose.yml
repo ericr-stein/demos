@@ -33,7 +33,9 @@ services:
   cloudflared:
     image: cloudflare/cloudflared:2026.10.0
     container_name: demos-cloudflared
-    command: ["tunnel", "--no-autoupdate", "run"]
+    # Pin the native Prometheus endpoint (otherwise the first free port of
+    # 20241-20245). Not published: scraped by prometheus over `edge` only.
+    command: ["tunnel", "--no-autoupdate", "--metrics", "0.0.0.0:20241", "run"]
     environment:
       - TUNNEL_TOKEN=${CF_TUNNEL_TOKEN:?inject_via_infisical}
     labels:
