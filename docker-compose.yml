@@ -9,7 +9,26 @@ services:
       com.box.service: web
       com.box.tier: frontend
       com.box.managed-by: agent
+    # stub_status on :8080 (not proxied by Caddy or the tunnel, which both
+    # target :80) for the nginx-exporter sidecar below.
+    configs:
+      - source: nginx_stub_status
+        target: /etc/nginx/conf.d/stub_status.conf
     networks: [edge]
+    restart: unless-stopped
+  # Prometheus exporter for the demos nginx (stub_status -> nginx_* on :9113,
+  # no auth). Scraped by prometheus over `edge`, where it reaches demos.
+  nginx-exporter:
+    image: nginx/nginx-prometheus-exporter:1.5.3
+    container_name: demos-nginx-exporter
+    command: ["--nginx.scrape-uri=http://demos:8080/stub_status"]
+    depends_on: [demos]
+    labels:
+      com.box.project: demos
+      com.box.service: nginx-exporter
+      com.box.tier: agent
+      com.box.managed-by: agent
+    networks: [edge, internal]
     restart: unless-stopped
   api:
     build:
@@ -45,6 +64,17 @@ services:
       com.box.managed-by: agent
     networks: [edge]
     restart: unless-stopped
+configs:
+  nginx_stub_status:
+    content: |
+      server {
+          listen 8080;
+          server_name _;
+          access_log off;
+          location = /stub_status {
+              stub_status;
+          }
+      }
 networks:
   edge: { external: true }
   internal: { external: true }
