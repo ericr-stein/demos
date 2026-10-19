@@ -28,7 +28,7 @@ services:
       com.box.service: nginx-exporter
       com.box.tier: agent
       com.box.managed-by: agent
-    networks: [edge, internal]
+    networks: [edge]
     restart: unless-stopped
   api:
     build:
